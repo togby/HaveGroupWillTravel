@@ -6,6 +6,8 @@ local window = addon.UIWindows.Dashboard
 
 local MainFrame
 
+local size = 50
+
 function window:SetupWindow()
     local frame, Button, fs -- temps used below
 	-- main frame
@@ -15,15 +17,18 @@ function window:SetupWindow()
 	MainFrame:SetMovable(true)
 	MainFrame:SetToplevel(true)
 
-	-- size of backdrop window
-	local sizeOfBackground
-	sizeOfBackground = 100
+	-- Size of background
+	local sizeOfBackground = size*1.5
 	MainFrame:SetWidth(sizeOfBackground)
 	MainFrame:SetHeight(sizeOfBackground)
+
+	-- button size
+	local backdropSize = size/2
+	local backdropInsets = backdropSize/4
     MainFrame:SetBackdrop( {
 		bgFile = "Interface\\Buttons\\WHITE8X8",
-		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = 16, edgeSize = 16,
-		insets = { left = 5, right = 5, top = 5, bottom = 5 }
+		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = backdropSize, edgeSize = backdropSize,
+		insets = { left = backdropInsets, right = backdropInsets, top = backdropInsets, bottom = backdropInsets}
 	})
     local BorderColor = {r = 0,g = 0,b = 0, a = 0.85}
     local BackgroundColor = {r = 0.1,g = 0,b = 0, a = 1}
@@ -52,10 +57,10 @@ function window:SetupWindow()
 end
 
 function window:setupTeleportButtons()
-    window:setupTeleportButton(131204)
+    window:setupTeleportButton(2061)
 end
 
-function window:setupTeleportButton(spellID)
+function window:setupTeleportButton(spellID, size)
     
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
