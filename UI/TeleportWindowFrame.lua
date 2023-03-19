@@ -14,8 +14,12 @@ function window:SetupWindow()
 	MainFrame:SetFrameStrata("MEDIUM")
 	MainFrame:SetMovable(true)
 	MainFrame:SetToplevel(true)
-	MainFrame:SetWidth(400)
-	MainFrame:SetHeight(400)
+
+	-- size of backdrop window
+	local sizeOfBackground
+	sizeOfBackground = 100
+	MainFrame:SetWidth(sizeOfBackground)
+	MainFrame:SetHeight(sizeOfBackground)
     MainFrame:SetBackdrop( {
 		bgFile = "Interface\\Buttons\\WHITE8X8",
 		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = 16, edgeSize = 16,
@@ -64,7 +68,7 @@ function window:setupTeleportButton(spellID)
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
     Button:SetAttribute("type", "spell")
-    Button:SetAttribute("spell", 131204)
+    Button:SetAttribute("spell", spellID)
 
     Button:Show()
 end
