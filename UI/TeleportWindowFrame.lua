@@ -64,7 +64,7 @@ function window:setupTeleportButton(spellID)
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
     Button:SetAttribute("type", "spell")
-    Button:SetAttribute("spell", 131204)
+    Button:SetAttribute("spell", spellID)
 
     Button:Show()
 end
