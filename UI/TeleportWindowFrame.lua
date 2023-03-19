@@ -59,12 +59,11 @@ function window:SetupWindow()
 	MainFrame:SetScript("OnHide",function(self) self:StopMovingOrSizing() end)
 	MainFrame:SetClampedToScreen(true)
 
-    window:LoadFramePosition()
     window:setupTeleportButtons()
 end
 
 function window:setupTeleportButtons()
-    window:setupTeleportButton(131204)
+    window:setupTeleportButton(19750)
 end
 
 function window:setupTeleportButton(spellID)
@@ -80,11 +79,12 @@ function window:setupTeleportButton(spellID)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
-    Button:SetAttribute("type", "spell")
-    Button:SetAttribute("spell", spellID)
-	
-	Button:SetAttribute("type", "macro");
-	Button:SetAttribute("macrotext", "/cast !Inner Light");
+    --Button:SetAttribute("type", "spell")
+    --Button:SetAttribute("spell", spellID)
+
+	Button:SetAttribute("type", "macro")
+	Button:SetAttribute("macrotext", "/cast Path of the Jade Serpent")
+	Button:SetAttribute("macrotext", "/cast " .. name)
     Button:Show()
 end
 
