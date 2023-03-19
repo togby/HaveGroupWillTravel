@@ -18,7 +18,8 @@ function window:SetupWindow()
 	MainFrame:SetToplevel(true)
 	MainFrame:RegisterEvent("ADDON_LOADED")
 	MainFrame:SetScript("OnEvent", function(self, event, ...)
-		if (event == "ADDON_LOADED") then
+		if (event == "ADDON_LOADED") and select(1,...) == addonName then
+			addon.profile = HaveGroupWillTravelDB
 			window:LoadFramePosition()
 		end
 	end)
@@ -81,21 +82,21 @@ function window:setupTeleportButton(spellID)
 
     Button:SetAttribute("type", "spell")
     Button:SetAttribute("spell", spellID)
-
+	
+	Button:SetAttribute("type", "macro");
+	Button:SetAttribute("macrotext", "/cast !Inner Light");
     Button:Show()
 end
 
 function window:SaveFramePosition()
-	HaveGroupWillTravelDB.MainFramePosX = MainFrame:GetLeft()
-	HaveGroupWillTravelDB.MainFramePosY = MainFrame:GetTop()
+	addon.profile.MainFramePosX = MainFrame:GetLeft()
+	addon.profile.MainFramePosY = MainFrame:GetTop()
 end
 
 function window:LoadFramePosition()
 	MainFrame:ClearAllPoints()
-    
-    --print(HaveGroupWillTravelDB.MainFramePosX .. " " .. HaveGroupWillTravelDB.MainFramePosY)
-	if (HaveGroupWillTravelDB.MainFramePosX or 0 ~= 0) or (HaveGroupWillTravelDB.MainFramePosY or 0 ~= 0) then
-		MainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", HaveGroupWillTravelDB.MainFramePosX, HaveGroupWillTravelDB.MainFramePosY)
+	if (addon.profile.MainFramePosX or 0 ~= 0) or (addon.profile.MainFramePosY or 0 ~= 0) then
+		MainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", addon.profile.MainFramePosX, addon.profile.MainFramePosY)
 	else
 		MainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 	end
