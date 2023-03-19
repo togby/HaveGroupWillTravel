@@ -6,7 +6,7 @@ local window = addon.UIWindows.Dashboard
 
 local MainFrame
 
-local size = 50
+local size = 200
 
 function window:SetupWindow()
     local frame, Button, fs -- temps used below
@@ -67,8 +67,8 @@ function window:setupTeleportButton(spellID, size)
     Button.tex:SetAllPoints(Button)
     Button.tex:SetTexture("interface/icons/inv_mushroom_11")
 
-    Button:SetWidth(50)
-    Button:SetHeight(50)
+    Button:SetWidth(size)
+    Button:SetHeight(size)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
