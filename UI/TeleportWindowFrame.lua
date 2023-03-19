@@ -63,7 +63,7 @@ function window:SetupWindow()
 end
 
 function window:setupTeleportButtons()
-    window:setupTeleportButton(2096)
+    window:setupTeleportButton(8690)
 end
 
 function window:setupTeleportButton(spellID)
@@ -79,13 +79,12 @@ function window:setupTeleportButton(spellID)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
-    --Button:SetAttribute("type", "spell")
-    --Button:SetAttribute("spell", spellID)
+    Button:SetAttribute("type", "spell")
+    Button:SetAttribute("spell", spellID)
 
-	Button:SetAttribute("type", "macro")
-	-- Button:SetAttribute("macrotext", "/cast Path of the Jade Serpent")
-	Button:SetAttribute("macrotext", "/cast " .. name)
-	-- print(name)
+	--Button:SetAttribute("type", "macro")
+	--Button:SetAttribute("macrotext", "/cast Path of the Jade Serpent")
+	--Button:SetAttribute("macrotext", "/cast " .. name)
     Button:Show()
 end
 
