@@ -63,7 +63,7 @@ function window:SetupWindow()
 end
 
 function window:setupTeleportButtons()
-    window:setupTeleportButton(19750)
+    window:setupTeleportButton(2061)
 end
 
 function window:setupTeleportButton(spellID)
