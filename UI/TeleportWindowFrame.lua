@@ -16,7 +16,12 @@ function window:SetupWindow()
 	MainFrame:SetFrameStrata("MEDIUM")
 	MainFrame:SetMovable(true)
 	MainFrame:SetToplevel(true)
-
+	MainFrame:RegisterEvent("ADDON_LOADED")
+	MainFrame:SetScript("OnEvent", function(self, event, ...)
+		if (event == "ADDON_LOADED") then
+			window:LoadFramePosition()
+		end
+	end)
 	-- Size of background
 	local sizeOfBackground = size*1.5
 	MainFrame:SetWidth(sizeOfBackground)
@@ -79,7 +84,6 @@ function window:setupTeleportButton(spellID)
 
     Button:Show()
 end
-
 
 function window:SaveFramePosition()
 	HaveGroupWillTravelDB.MainFramePosX = MainFrame:GetLeft()
