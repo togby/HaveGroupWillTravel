@@ -37,7 +37,7 @@ function window:SetupWindow()
 		insets = { left = backdropInsets, right = backdropInsets, top = backdropInsets, bottom = backdropInsets}
 	})
     local BorderColor = {r = 0,g = 0,b = 0, a = 0.85}
-    local BackgroundColor = {r = 0.1,g = 0,b = 0, a = 1}
+    local BackgroundColor = {r = 0.0,g = 1,b = 0, a = 1}
 	MainFrame:SetBackdropColor(BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a)
 	MainFrame:SetBackdropBorderColor(BorderColor.r, BorderColor.g, BorderColor.b, BorderColor.a)
 
@@ -63,7 +63,7 @@ function window:SetupWindow()
 end
 
 function window:setupTeleportButtons()
-    window:setupTeleportButton(2061)
+    window:setupTeleportButton(8690)
 end
 
 function window:setupTeleportButton(spellID)
@@ -79,12 +79,12 @@ function window:setupTeleportButton(spellID)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
-    --Button:SetAttribute("type", "spell")
-    --Button:SetAttribute("spell", spellID)
+    Button:SetAttribute("type", "spell")
+    Button:SetAttribute("spell", spellID)
 
-	Button:SetAttribute("type", "macro")
-	Button:SetAttribute("macrotext", "/cast Path of the Jade Serpent")
-	Button:SetAttribute("macrotext", "/cast " .. name)
+	--Button:SetAttribute("type", "macro")
+	--Button:SetAttribute("macrotext", "/cast Path of the Jade Serpent")
+	--Button:SetAttribute("macrotext", "/cast " .. name)
     Button:Show()
 end
 
