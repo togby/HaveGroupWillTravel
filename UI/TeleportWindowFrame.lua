@@ -2,11 +2,11 @@ local addonName, addon = ...
 
 
 addon.UIWindows.Dashboard = {}
-local Window = addon.UIWindows.Dashboard
+local window = addon.UIWindows.Dashboard
 
 local MainFrame
 
-function Window:SetupWindow()
+function window:SetupWindow()
     local frame, Button, fs -- temps used below
 	-- main frame
 	MainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
@@ -38,23 +38,31 @@ function Window:SetupWindow()
 	MainFrame:SetScript("OnMouseUp",function(self, Button)
 		if ( Button == "LeftButton" ) then
 			self:StopMovingOrSizing()
-			Window:SaveFramePosition()
+			window:SaveFramePosition()
 		end
 	end)
 	MainFrame:SetScript("OnHide",function(self) self:StopMovingOrSizing() end)
 	MainFrame:SetClampedToScreen(true)
 
+    window:setupTeleportButtons()
+end
+
+function window:setupTeleportButtons()
+    window:setupTeleportButton(131204)
+end
+
+function window:setupTeleportButton(spellID)
+    
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)
     Button.tex:SetTexture("interface/icons/inv_mushroom_11")
-    
+
     Button:SetWidth(50)
     Button:SetHeight(50)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
-    Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
     Button:SetAttribute("type", "spell")
     Button:SetAttribute("spell", 131204)
 
@@ -62,26 +70,26 @@ function Window:SetupWindow()
 end
 
 
-function Window:SaveFramePosition()
+function window:SaveFramePosition()
 	Profile.MainFramePosX = MainFrame:GetLeft()
 	Profile.MainFramePosY = MainFrame:GetTop()
 end
 
 
-function Window:Show()
+function window:Show()
 	if (InCombatLockdown()) then
 		return
 	end
 	ShowUIPanel(MainFrame)
 end
 
-function Window:Hide()
+function window:Hide()
 	if (InCombatLockdown()) then
 		return
 	end
 	HideUIPanel(MainFrame)
 end
 
-function Window:isWindowHidden()
+function window:isWindowHidden()
 	return MainFrame:IsShown() == false
 end
