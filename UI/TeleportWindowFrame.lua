@@ -79,6 +79,7 @@ end
 
 function window:LoadFramePosition()
 	MainFrame:ClearAllPoints()
+    
     --print(HaveGroupWillTravelDB.MainFramePosX .. " " .. HaveGroupWillTravelDB.MainFramePosY)
 	if (HaveGroupWillTravelDB.MainFramePosX or 0 ~= 0) or (HaveGroupWillTravelDB.MainFramePosY or 0 ~= 0) then
 		MainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", HaveGroupWillTravelDB.MainFramePosX, HaveGroupWillTravelDB.MainFramePosY)
