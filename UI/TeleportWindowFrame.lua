@@ -44,6 +44,7 @@ function window:SetupWindow()
 	MainFrame:SetScript("OnHide",function(self) self:StopMovingOrSizing() end)
 	MainFrame:SetClampedToScreen(true)
 
+    window:LoadFramePosition()
     window:setupTeleportButtons()
 end
 
@@ -56,7 +57,8 @@ function window:setupTeleportButton(spellID)
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)
-    Button.tex:SetTexture("interface/icons/inv_mushroom_11")
+    local name, _, icon = GetSpellInfo(spellID)
+    Button.tex:SetTexture(icon)
 
     Button:SetWidth(50)
     Button:SetHeight(50)
@@ -71,8 +73,18 @@ end
 
 
 function window:SaveFramePosition()
-	Profile.MainFramePosX = MainFrame:GetLeft()
-	Profile.MainFramePosY = MainFrame:GetTop()
+	HaveGroupWillTravelDB.MainFramePosX = MainFrame:GetLeft()
+	HaveGroupWillTravelDB.MainFramePosY = MainFrame:GetTop()
+end
+
+function window:LoadFramePosition()
+	MainFrame:ClearAllPoints()
+    --print(HaveGroupWillTravelDB.MainFramePosX .. " " .. HaveGroupWillTravelDB.MainFramePosY)
+	if (HaveGroupWillTravelDB.MainFramePosX or 0 ~= 0) or (HaveGroupWillTravelDB.MainFramePosY or 0 ~= 0) then
+		MainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", HaveGroupWillTravelDB.MainFramePosX, HaveGroupWillTravelDB.MainFramePosY)
+	else
+		MainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+	end
 end
 
 
