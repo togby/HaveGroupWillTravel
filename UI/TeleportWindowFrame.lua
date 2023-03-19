@@ -6,6 +6,8 @@ local window = addon.UIWindows.Dashboard
 
 local MainFrame
 
+local size = 50
+
 function window:SetupWindow()
     local frame, Button, fs -- temps used below
 	-- main frame
@@ -14,12 +16,19 @@ function window:SetupWindow()
 	MainFrame:SetFrameStrata("MEDIUM")
 	MainFrame:SetMovable(true)
 	MainFrame:SetToplevel(true)
-	MainFrame:SetWidth(400)
-	MainFrame:SetHeight(400)
+
+	-- Size of background
+	local sizeOfBackground = size*1.5
+	MainFrame:SetWidth(sizeOfBackground)
+	MainFrame:SetHeight(sizeOfBackground)
+
+	-- button size
+	local backdropSize = size/2
+	local backdropInsets = backdropSize/4
     MainFrame:SetBackdrop( {
 		bgFile = "Interface\\Buttons\\WHITE8X8",
-		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = 16, edgeSize = 16,
-		insets = { left = 5, right = 5, top = 5, bottom = 5 }
+		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = backdropSize, edgeSize = backdropSize,
+		insets = { left = backdropInsets, right = backdropInsets, top = backdropInsets, bottom = backdropInsets}
 	})
     local BorderColor = {r = 0,g = 0,b = 0, a = 0.85}
     local BackgroundColor = {r = 0.1,g = 0,b = 0, a = 1}
@@ -60,8 +69,8 @@ function window:setupTeleportButton(spellID)
     local name, _, icon = GetSpellInfo(spellID)
     Button.tex:SetTexture(icon)
 
-    Button:SetWidth(50)
-    Button:SetHeight(50)
+    Button:SetWidth(size)
+    Button:SetHeight(size)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
 
