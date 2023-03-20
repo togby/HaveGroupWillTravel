@@ -4,6 +4,8 @@
 
 Event.lua
 
+Data/DungeonPortals.lua
+
 UI/UI.lua
 UI/SettingsWindow.lua
 UI/TeleportWindowFrame.lua

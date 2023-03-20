@@ -10,14 +10,8 @@ local size = 50
 
 -- All currently known(by Oskar) dungeon teleporter ID's
 -- Tables automitically sort tables by key value, so below is not how they will generate in game
-local dungeons = {
-	["MIST"] = {131204},
-	["WOD"] = {159899, 159900, 159896},
-	["LEGION"] = {373262, 393766},
-	["DF"] =  {393256, 393273},
-	["BFA"] = {373274},
-	["SL"] = {354462, 354463, 354464 ,354465 ,354466 ,354467 ,354468 ,354469 ,367416}
-}
+local dungeons = addon.data.DungeonTeleportersByExpansion()
+
 
 function window:SetupWindow()
     local frame, Button, fs -- temps used below
@@ -76,10 +70,10 @@ end
 function window:setupTeleportButtons()
 	local yPos = 0
 	local xPos
-	for exp, spells in pairs(dungeons) do 
+	for exp, spells in pairs(dungeons) do
 		xPos = 0
 		for _, spell in ipairs(spells) do
-			window:setupTeleportButton(spell, xPos, yPos)
+			window:setupTeleportButton(spell.spellID, xPos, yPos)
 			xPos = xPos - size
 		end
 		yPos = yPos - size
