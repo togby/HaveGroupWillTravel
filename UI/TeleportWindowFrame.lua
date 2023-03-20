@@ -8,6 +8,12 @@ local MainFrame
 
 local size = 50
 
+local dungeons = {
+	["Temple"] = 131204,
+	["Shadowmooon"] = 159899,
+	["Grimrail"] = 159900,
+}
+
 function window:SetupWindow()
     local frame, Button, fs -- temps used below
 	-- main frame
@@ -63,10 +69,17 @@ function window:SetupWindow()
 end
 
 function window:setupTeleportButtons()
-    window:setupTeleportButton(8690)
+	local yPos = 0
+	for name, id in pairs(dungeons)
+	do 
+		print(name, yPos)
+		window:setupTeleportButton(id, yPos)
+		yPos = yPos - size 
+	end
+
 end
 
-function window:setupTeleportButton(spellID)
+function window:setupTeleportButton(spellID, yPos)
     
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
@@ -77,7 +90,7 @@ function window:setupTeleportButton(spellID)
     Button:SetWidth(size)
     Button:SetHeight(size)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
-	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
+	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, yPos)
 
     Button:SetAttribute("type", "spell")
     Button:SetAttribute("spell", spellID)
