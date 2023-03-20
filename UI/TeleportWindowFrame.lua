@@ -95,8 +95,13 @@ function window:setupTeleportButton(spellData, xPos, yPos)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
 
-    Button:SetAttribute("type", "spell")
-    Button:SetAttribute("spell", spellID)
+	if spellData.isKnown then
+		Button:SetAttribute("type", "spell")
+		Button:SetAttribute("spell", spellID)
+		
+	else
+		Button.tex:SetDesaturated(1)
+	end
 
 	--Button:SetAttribute("type", "macro")
 	--Button:SetAttribute("macrotext", "/cast " .. name)
