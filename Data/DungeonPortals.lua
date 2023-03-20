@@ -28,6 +28,7 @@ local function CreateDungeonTeleportData(spellID, expansion)
     local name, _, icon = GetSpellInfo(spellID)
     data.name = name
     data.icon = icon
+    data.isKnown = IsSpellKnown(spellID)
     return data
 end
 
