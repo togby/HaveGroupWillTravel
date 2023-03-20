@@ -5,6 +5,7 @@
 Event.lua
 
 UI/UI.lua
+UI/SettingsWindow.lua
 UI/TeleportWindowFrame.lua
 
 UI/Views/GridView.lua
