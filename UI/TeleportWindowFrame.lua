@@ -43,7 +43,7 @@ function window:SetupWindow()
 		insets = { left = backdropInsets, right = backdropInsets, top = backdropInsets, bottom = backdropInsets}
 	})
     local BorderColor = {r = 0,g = 0,b = 0, a = 0.85}
-    local BackgroundColor = {r = 0,g = 0,b = 0.1, a = 1}
+    local BackgroundColor = {r = 0.1,g = 0,b = 0, a = 1}
 	MainFrame:SetBackdropColor(BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a)
 	MainFrame:SetBackdropBorderColor(BorderColor.r, BorderColor.g, BorderColor.b, BorderColor.a)
 
@@ -80,7 +80,6 @@ function window:setupTeleportButtons()
 end
 
 function window:setupTeleportButton(spellID, yPos)
-    
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)
