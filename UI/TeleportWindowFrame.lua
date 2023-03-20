@@ -8,6 +8,17 @@ local MainFrame
 
 local size = 50
 
+-- All currently known(by Oskar) dungeon teleporter ID's
+-- Tables automitically sort tables by key value, so below is not how they will generate in game
+local dungeons = {
+	["MIST"] = {131204},
+	["WOD"] = {159899, 159900, 159896},
+	["LEGION"] = {373262, 393766},
+	["DF"] =  {393256, 393273},
+	["BFA"] = {373274},
+	["SL"] = {354462, 354463, 354464 ,354465 ,354466 ,354467 ,354468 ,354469 ,367416}
+}
+
 function window:SetupWindow()
     local frame, Button, fs -- temps used below
 	-- main frame
@@ -63,26 +74,36 @@ function window:SetupWindow()
 end
 
 function window:setupTeleportButtons()
-    window:setupTeleportButton(131204)
+	local yPos = 0
+	local xPos
+	for exp, spells in pairs(dungeons) do 
+		xPos = 0
+		for _, spell in ipairs(spells) do
+			window:setupTeleportButton(spell, xPos, yPos)
+			xPos = xPos - size
+		end
+		yPos = yPos - size
+	end
+
 end
 
-function window:setupTeleportButton(spellID)
+function window:setupTeleportButton(spellID, xPos, yPos)
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)
     local name, _, icon = GetSpellInfo(spellID)
+	print(name, spellID, xPos, yPos)
     Button.tex:SetTexture(icon)
 
     Button:SetWidth(size)
     Button:SetHeight(size)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
-	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, 0)
+	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
 
     Button:SetAttribute("type", "spell")
     Button:SetAttribute("spell", spellID)
 
 	--Button:SetAttribute("type", "macro")
-	--Button:SetAttribute("macrotext", "/cast Path of the Jade Serpent")
 	--Button:SetAttribute("macrotext", "/cast " .. name)
     Button:Show()
 end
