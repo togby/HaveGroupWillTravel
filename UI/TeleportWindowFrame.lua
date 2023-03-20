@@ -67,7 +67,6 @@ function window:setupTeleportButtons()
 end
 
 function window:setupTeleportButton(spellID)
-    
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)

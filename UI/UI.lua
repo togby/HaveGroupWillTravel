@@ -1,7 +1,5 @@
 local addonName, addon = ...
 
-local L = addon.L
-
 addon.UIWindows = {}
 
 function addon:SetupFrames()
