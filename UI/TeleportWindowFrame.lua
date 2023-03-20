@@ -9,9 +9,9 @@ local MainFrame
 local size = 50
 
 local dungeons = {
-	["Temple"] = 131204,
-	["Shadowmooon"] = 159899,
-	["Grimrail"] = 159900,
+	["MOP"] = {131204},
+	["WOD"] = {159899, 159900, 159896},
+	["LEG"] = {373262, 393766},
 }
 
 function window:SetupWindow()
@@ -70,16 +70,20 @@ end
 
 function window:setupTeleportButtons()
 	local yPos = 0
-	for name, id in pairs(dungeons)
-	do 
-		print(name, yPos)
-		window:setupTeleportButton(id, yPos)
-		yPos = yPos - size 
+	local xPos
+	for exp, spells in pairs(dungeons) do 
+		xPos = 0
+		for _, spell in ipairs(spells) do
+			print(spell, xPos, yPos)
+			window:setupTeleportButton(spell, xPos, yPos)
+			xPos = xPos - size
+		end
+		yPos = yPos - size
 	end
 
 end
 
-function window:setupTeleportButton(spellID, yPos)
+function window:setupTeleportButton(spellID, xPos, yPos)
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)
@@ -89,7 +93,7 @@ function window:setupTeleportButton(spellID, yPos)
     Button:SetWidth(size)
     Button:SetHeight(size)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
-	Button:SetPoint("CENTER", MainFrame, "CENTER", 0, yPos)
+	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
 
     Button:SetAttribute("type", "spell")
     Button:SetAttribute("spell", spellID)
