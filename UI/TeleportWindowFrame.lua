@@ -8,10 +8,15 @@ local MainFrame
 
 local size = 50
 
+-- All currently known(by Oskar) dungeon teleporter ID's
+-- Tables automitically sort tables by key value, so below is not how they will generate in game
 local dungeons = {
-	["MOP"] = {131204},
+	["MIST"] = {131204},
 	["WOD"] = {159899, 159900, 159896},
-	["LEG"] = {373262, 393766},
+	["LEGION"] = {373262, 393766},
+	["DF"] =  {393256, 393273},
+	["BFA"] = {373274},
+	["SL"] = {354462, 354463, 354464 ,354465 ,354466 ,354467 ,354468 ,354469 ,367416}
 }
 
 function window:SetupWindow()
@@ -74,7 +79,6 @@ function window:setupTeleportButtons()
 	for exp, spells in pairs(dungeons) do 
 		xPos = 0
 		for _, spell in ipairs(spells) do
-			print(spell, xPos, yPos)
 			window:setupTeleportButton(spell, xPos, yPos)
 			xPos = xPos - size
 		end
@@ -88,6 +92,7 @@ function window:setupTeleportButton(spellID, xPos, yPos)
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)
     local name, _, icon = GetSpellInfo(spellID)
+	print(name, spellID, xPos, yPos)
     Button.tex:SetTexture(icon)
 
     Button:SetWidth(size)
@@ -99,7 +104,6 @@ function window:setupTeleportButton(spellID, xPos, yPos)
     Button:SetAttribute("spell", spellID)
 
 	--Button:SetAttribute("type", "macro")
-	--Button:SetAttribute("macrotext", "/cast Path of the Jade Serpent")
 	--Button:SetAttribute("macrotext", "/cast " .. name)
     Button:Show()
 end
