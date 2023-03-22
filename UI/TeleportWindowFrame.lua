@@ -96,7 +96,6 @@ function window:setupTeleportButton(spellData, xPos, yPos)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
 	Button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
-	Button:SetMouseClickEnabled(true)
 
 	if spellData.isKnown then
 		Button:SetAttribute("type", "spell")
