@@ -32,7 +32,6 @@ local function CreateDungeonTeleportData(spellID, expansion)
     return data
 end
 
-
 DungeonsTeleporters = {
     [131204] = CreateDungeonTeleportData(131204, "MoP"),
     [159899] = CreateDungeonTeleportData(159899, "WOD"),
