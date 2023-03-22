@@ -74,7 +74,7 @@ function window:setupTeleportButtons()
 	for exp, spells in pairs(dungeons) do
 		xPos = 0
 		for _, spell in ipairs(spells) do
-			window:setupTeleportButton(spell.spellID, xPos, yPos)
+			window:setupTeleportButton(spell, xPos, yPos)
 			xPos = xPos - size
 		end
 		yPos = yPos - size
@@ -82,27 +82,32 @@ function window:setupTeleportButtons()
 
 end
 
-function window:setupTeleportButton(spellID, xPos, yPos)
+function window:setupTeleportButton(spellData, xPos, yPos)
+	local spellID = spellData.spellID
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
     Button.tex = Button:CreateTexture()
     Button.tex:SetAllPoints(Button)
     local name, _, icon = GetSpellInfo(spellID)
 	print(name, spellID, xPos, yPos)
-    Button.tex:SetTexture(icon)
+    Button.tex:SetTexture(spellData.icon)
 
     Button:SetWidth(size)
     Button:SetHeight(size)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
-
 	Button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
 	Button:SetMouseClickEnabled(true)
 
-    --Button:SetAttribute("type", "spell")
-    --Button:SetAttribute("spell", spellID)
+	if spellData.isKnown then
+		--Button:SetAttribute("type", "spell")
+		--Button:SetAttribute("spell", spellID)
 
 	Button:SetAttribute("type", "macro")
 	Button:SetAttribute("macrotext", "/cast " .. name)
+		
+	else
+		Button.tex:SetDesaturated(1)
+	end
 
     Button:Show()
 end

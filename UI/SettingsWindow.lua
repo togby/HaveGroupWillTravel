@@ -66,7 +66,7 @@ function window:SetupWindow()
 	button:SetScript("OnMouseDown",function()
 		window:Hide()
 	end)
-	--window:Hide()
+	window:Hide()
 end
 
 function window:SaveFramePosition()

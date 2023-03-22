@@ -27,10 +27,10 @@ local function CreateDungeonTeleportData(spellID, expansion)
 
     local name, _, icon = GetSpellInfo(spellID)
     data.name = name
-    data.Texture = icon
+    data.icon = icon
+    data.isKnown = IsSpellKnown(spellID)
     return data
 end
-
 
 DungeonsTeleporters = {
     [131204] = CreateDungeonTeleportData(131204, "MOP"),
