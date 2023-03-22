@@ -33,7 +33,7 @@ end
 
 
 DungeonsTeleporters = {
-    [131204] = CreateDungeonTeleportData(131204, "MoP"),
+    [131204] = CreateDungeonTeleportData(131204, "MOP"),
     [159899] = CreateDungeonTeleportData(159899, "WOD"),
     [159900] = CreateDungeonTeleportData(159900, "WOD"),
     [159896] = CreateDungeonTeleportData(159896, "WOD"),

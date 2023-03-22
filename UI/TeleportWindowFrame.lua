@@ -17,7 +17,8 @@ function window:SetupWindow()
     local frame, Button, fs -- temps used below
 	-- main frame
 	MainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    MainFrame:EnableMouse(true)
+    MainFrame:SetMouseClickEnabled(true)
+	MainFrame:SetMouseMotionEnabled(true)
 	MainFrame:SetFrameStrata("MEDIUM")
 	MainFrame:SetMovable(true)
 	MainFrame:SetToplevel(true)
@@ -94,11 +95,15 @@ function window:setupTeleportButton(spellID, xPos, yPos)
     Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
 
-    Button:SetAttribute("type", "spell")
-    Button:SetAttribute("spell", spellID)
+	Button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
+	Button:SetMouseClickEnabled(true)
 
-	--Button:SetAttribute("type", "macro")
-	--Button:SetAttribute("macrotext", "/cast " .. name)
+    --Button:SetAttribute("type", "spell")
+    --Button:SetAttribute("spell", spellID)
+
+	Button:SetAttribute("type", "macro")
+	Button:SetAttribute("macrotext", "/cast " .. name)
+
     Button:Show()
 end
 
