@@ -51,6 +51,7 @@ DungeonsTeleporters = {
     [354468] = CreateDungeonTeleportData(354468, "SL"),
     [354469] = CreateDungeonTeleportData(354469, "SL"),
     [367416] = CreateDungeonTeleportData(367416, "SL"),
+    [2061] = CreateDungeonTeleportData(2061, "TEST"),
 
 }
 

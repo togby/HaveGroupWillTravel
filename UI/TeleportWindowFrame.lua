@@ -99,12 +99,11 @@ function window:setupTeleportButton(spellData, xPos, yPos)
 	Button:SetMouseClickEnabled(true)
 
 	if spellData.isKnown then
-		--Button:SetAttribute("type", "spell")
-		--Button:SetAttribute("spell", spellID)
+		Button:SetAttribute("type", "spell")
+		Button:SetAttribute("spell", spellID)
 
-	Button:SetAttribute("type", "macro")
-	Button:SetAttribute("macrotext", "/cast " .. name)
-		
+		--Button:SetAttribute("type", "macro")
+		--Button:SetAttribute("macrotext", "/cast " .. name)
 	else
 		Button.tex:SetDesaturated(1)
 	end
