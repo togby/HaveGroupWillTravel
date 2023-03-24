@@ -24,8 +24,8 @@ local function CreateDungeonTeleportData(spellID, expansion, dungeonFullName, du
     local data = {}
     data.spellID = spellID
     data.expansion = expansion
-    data.dungeonFullName = dungeonFullName
-    data.dungeonShortName = dungeonShortName
+    data.fullName = dungeonFullName
+    data.shortName = dungeonShortName
 
     local name, _, icon = GetSpellInfo(spellID)
     data.name = name

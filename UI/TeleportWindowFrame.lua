@@ -85,11 +85,11 @@ end
 function window:setupTeleportButton(spellData, xPos, yPos)
 	local spellID = spellData.spellID
     local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
-    Button.tex = Button:CreateTexture()
-    Button.tex:SetAllPoints(Button)
+    Button.texture = Button:CreateTexture()
+    Button.texture:SetAllPoints(Button)
     local name, _, icon = GetSpellInfo(spellID)
 	print(name, spellID, xPos, yPos)
-    Button.tex:SetTexture(spellData.icon)
+    Button.texture:SetTexture(spellData.icon)
 
     Button:SetWidth(size)
     Button:SetHeight(size)
@@ -104,9 +104,16 @@ function window:setupTeleportButton(spellData, xPos, yPos)
 		--Button:SetAttribute("type", "macro")
 		--Button:SetAttribute("macrotext", "/cast " .. name)
 	else
-		Button.tex:SetDesaturated(1)
+		Button.texture:SetDesaturated(1)
 	end
-
+	local overlayText = Button:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
+	Button.overlayText = overlayText
+	overlayText:SetWidth(Button:GetWidth())
+	overlayText:SetHeight(20)
+	overlayText:SetFont(overlayText:GetFont(),17,"OUTLINE")
+	overlayText:SetPoint("TOP", Button, "TOP", 0, -5)
+	overlayText:SetText(spellData.shortName)
+	overlayText:Show()
     Button:Show()
 end
 
