@@ -27,6 +27,7 @@ function window:SetupWindow()
 		if (event == "ADDON_LOADED") and select(1,...) == addonName then
 			addon.profile = HaveGroupWillTravelDB
 			window:LoadFramePosition()
+			addon:EmitEvent("AddonLoaded")
 		end
 	end)
 	-- Size of background
@@ -84,11 +85,13 @@ end
 
 function window:setupTeleportButton(spellData, xPos, yPos)
 	local spellID = spellData.spellID
-    local Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
+	spellData.Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
+    local Button = spellData.Button
+	Button.spellData = spellData
     Button.texture = Button:CreateTexture()
     Button.texture:SetAllPoints(Button)
     local name, _, icon = GetSpellInfo(spellID)
-	print(name, spellID, xPos, yPos)
+	--print(name, spellID, xPos, yPos)
     Button.texture:SetTexture(spellData.icon)
 
     Button:SetWidth(size)
@@ -97,15 +100,6 @@ function window:setupTeleportButton(spellData, xPos, yPos)
 	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
 	Button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
 
-	if spellData.isKnown then
-		Button:SetAttribute("type", "spell")
-		Button:SetAttribute("spell", spellID)
-
-		--Button:SetAttribute("type", "macro")
-		--Button:SetAttribute("macrotext", "/cast " .. name)
-	else
-		Button.texture:SetDesaturated(1)
-	end
 	local overlayText = Button:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
 	Button.overlayText = overlayText
 	overlayText:SetWidth(Button:GetWidth())
@@ -115,6 +109,16 @@ function window:setupTeleportButton(spellData, xPos, yPos)
 	overlayText:SetText(spellData.shortName)
 	overlayText:Show()
     Button:Show()
+
+	Button.ChangeIsKnown = function (self)
+		if self.spellData.isKnown then
+			self:SetAttribute("type", "spell")
+			self:SetAttribute("spell", self.spellData.spellID)
+			self.texture:SetDesaturated(false)
+		else
+			self.texture:SetDesaturated(true)
+		end
+	end
 end
 
 function window:SaveFramePosition()

@@ -7,7 +7,15 @@ local data = {}
 data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
+addon:RegisterCallback("AddonLoaded", function ()
+    C_Timer.After(10, function ()
+        for key, value in pairs(data.EveryTeleporter) do
+            value.isKnown = IsSpellKnown(value.spellID)
 
+            value.Button:ChangeIsKnown()
+        end
+    end)
+end)
 
 addon.data.DungeonTeleportersByExpansion = function()
     local teleportersByExpansion = {}
