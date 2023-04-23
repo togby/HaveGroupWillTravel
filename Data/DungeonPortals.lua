@@ -7,7 +7,15 @@ local data = {}
 data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
+addon:RegisterCallback("AddonLoaded", function ()
+    C_Timer.After(10, function ()
+        for key, value in pairs(data.EveryTeleporter) do
+            value.isKnown = IsSpellKnown(value.spellID)
 
+            value.Button:ChangeIsKnown()
+        end
+    end)
+end)
 
 addon.data.DungeonTeleportersByExpansion = function()
     local teleportersByExpansion = {}
@@ -31,31 +39,35 @@ local function CreateDungeonTeleportData(spellID, expansion, dungeonFullName, du
     data.name = name
     data.icon = icon
     data.isKnown = IsSpellKnown(spellID)
+
+    DungeonsTeleporters[spellID] = data
     return data
 end
 
-DungeonsTeleporters = {
-    [131204] = CreateDungeonTeleportData(131204, "MOP",     "Temple of the Jade Serpent",       "TotJS"),
-    [159899] = CreateDungeonTeleportData(159899, "WOD",     "Shadowmoon Burial Grounds",        "SBG"),
-    [159900] = CreateDungeonTeleportData(159900, "WOD",     "Grimrail Depot",                   "DG"),
-    [159896] = CreateDungeonTeleportData(159896, "WOD",     "Iron Docks",                       "ID"),
-    [373262] = CreateDungeonTeleportData(373262, "LEGION",  "Karazhan",                         "KZ"),
-    [393766] = CreateDungeonTeleportData(393766, "LEGION",  "Court of Stars",                   "CoS"),
-    [393256] = CreateDungeonTeleportData(393256, "DF",      "Ruby Life Pools",                  "RLP"),
-    [393273] = CreateDungeonTeleportData(393273, "DF",      "Algeth'ar Academy",                "AA"),
-    [373274] = CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M"),
-    [354462] = CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW"),
-    [354463] = CreateDungeonTeleportData(354463, "SL",      "Plaguefall",                       "PF"),
-    [354464] = CreateDungeonTeleportData(354464, "SL",      "Mists of Tirna Scithe",            "MoTS"),
-    [354465] = CreateDungeonTeleportData(354465, "SL",      "Halls of Atonement",               "HoA"),
-    [354466] = CreateDungeonTeleportData(354466, "SL",      "Spires of Ascension",              "SoA"),
-    [354467] = CreateDungeonTeleportData(354467, "SL",      "Theater of Pain",                  "ToP"),
-    [354468] = CreateDungeonTeleportData(354468, "SL",      "De Other Side",                    "DOS"),
-    [354469] = CreateDungeonTeleportData(354469, "SL",      "Sanguine Depths",                  "SD"),
-    [367416] = CreateDungeonTeleportData(367416, "SL",      "Tazavesh, the Veiled Market",      "Ttvm"),
+DungeonsTeleporters = {}
+    CreateDungeonTeleportData(131204, "MOP",     "Temple of the Jade Serpent",       "TotJS")
+    CreateDungeonTeleportData(159899, "WOD",     "Shadowmoon Burial Grounds",        "SBG")
+    CreateDungeonTeleportData(159900, "WOD",     "Grimrail Depot",                   "DG")
+    CreateDungeonTeleportData(159896, "WOD",     "Iron Docks",                       "ID")
+    CreateDungeonTeleportData(373262, "LEGION",  "Karazhan",                         "KZ")
+    CreateDungeonTeleportData(393766, "LEGION",  "Court of Stars",                   "CoS")
+    CreateDungeonTeleportData(393256, "DF",      "Ruby Life Pools",                  "RLP")
+    CreateDungeonTeleportData(393273, "DF",      "Algeth'ar Academy",                "AA")
+    CreateDungeonTeleportData(393279, "DF",      "The Azure Vault",                  "TAV")
+    CreateDungeonTeleportData(393262, "DF",      "The Nokhud Offensive",             "TNO")
+    CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
+    CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW")
+    CreateDungeonTeleportData(354463, "SL",      "Plaguefall",                       "PF")
+    CreateDungeonTeleportData(354464, "SL",      "Mists of Tirna Scithe",            "MoTS")
+    CreateDungeonTeleportData(354465, "SL",      "Halls of Atonement",               "HoA")
+    CreateDungeonTeleportData(354466, "SL",      "Spires of Ascension",              "SoA")
+    CreateDungeonTeleportData(354467, "SL",      "Theater of Pain",                  "ToP")
+    CreateDungeonTeleportData(354468, "SL",      "De Other Side",                    "DOS")
+    CreateDungeonTeleportData(354469, "SL",      "Sanguine Depths",                  "SD")
+    CreateDungeonTeleportData(367416, "SL",      "Tazavesh, the Veiled Market",      "Ttvm")
     [367416] = CreateDungeonTeleportData(393279, "SL",      "Azure vault",      "AV"),
-    [2061] = CreateDungeonTeleportData(2061,     "TEST",    "Hearthstone",                      "HTEST"),
-}
+    CreateDungeonTeleportData(2061,   "TEST",    "Hearthstone",                      "HTEST")
+
 
 for key, value in pairs(DungeonsTeleporters) do
     data.EveryTeleporter[key] = value
