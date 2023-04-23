@@ -53,6 +53,7 @@ DungeonsTeleporters = {
     [354468] = CreateDungeonTeleportData(354468, "SL",      "De Other Side",                    "DOS"),
     [354469] = CreateDungeonTeleportData(354469, "SL",      "Sanguine Depths",                  "SD"),
     [367416] = CreateDungeonTeleportData(367416, "SL",      "Tazavesh, the Veiled Market",      "Ttvm"),
+    [367416] = CreateDungeonTeleportData(393279, "SL",      "Azure vault",      "AV"),
     [2061] = CreateDungeonTeleportData(2061,     "TEST",    "Hearthstone",                      "HTEST"),
 }
 
