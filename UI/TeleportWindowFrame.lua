@@ -1,8 +1,8 @@
 local addonName, addon = ...
 
 
-addon.UIWindows.Dashboard = {}
-local window = addon.UIWindows.Dashboard
+addon.UIWindows.TeleportWindowFrame = {}
+local window = addon.UIWindows.TeleportWindowFrame
 
 local MainFrame
 
@@ -48,7 +48,7 @@ function window:SetupWindow()
 	MainFrame:SetBackdropColor(BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a)
 	MainFrame:SetBackdropBorderColor(BorderColor.r, BorderColor.g, BorderColor.b, BorderColor.a)
 
-    MainFrame:Show()
+    --MainFrame:Show()
     MainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 
 

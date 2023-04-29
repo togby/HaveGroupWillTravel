@@ -11,6 +11,6 @@ UI/SettingsWindow.lua
 UI/TeleportWindowFrame.lua
 
 UI/Views/GridView.lua
-
+UI/MinimapButton.lua
 
 Core.lua
