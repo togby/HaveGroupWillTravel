@@ -12,7 +12,7 @@ addon:RegisterCallback("AddonLoaded", function ()
         for key, value in pairs(data.EveryTeleporter) do
             value.isKnown = IsSpellKnown(value.spellID)
 
-            value.Button:ChangeIsKnown()
+            value.button:ChangeIsKnown()
         end
     end)
 end)
