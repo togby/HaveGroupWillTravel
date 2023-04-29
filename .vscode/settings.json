@@ -31,6 +31,8 @@
         "NUM_CHAT_WINDOWS",
         "ChatEdit_GetActiveWindow",
         "GameTooltip",
-        "GetCursorPosition"
+        "GetCursorPosition",
+        "CreateFramePoolCollection",
+        "CreateFramePool"
     ]
 }
