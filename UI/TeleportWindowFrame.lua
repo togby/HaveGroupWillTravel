@@ -17,7 +17,8 @@ function window:SetupWindow()
     local frame, button, fs -- temps used below
 	-- main frame
 	mainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    mainFrame:Hide()
+    --mainFrame:Hide()
+
     mainFrame:SetMouseClickEnabled()
 	mainFrame:SetMouseMotionEnabled()
 	mainFrame:SetFrameStrata("MEDIUM")
@@ -72,49 +73,13 @@ end
 function window:setupTeleportButtons()
 	local yPos = 0
 	local xPos
-	for exp, spells in pairs(dungeonsByExpansion) do
+	for _, expansion in pairs(dungeonsByExpansion) do
 		xPos = 0
-		for _, spell in ipairs(spells) do
-			window:setupTeleportButton(spell, xPos, yPos)
+		for _, spellData in ipairs(expansion) do
+			spellData.button = addon.FrameFactory:CreateTeleportButtonForSpellData(spellData, mainFrame, size, xPos, yPos)
 			xPos = xPos - size
 		end
 		yPos = yPos - size
-	end
-end
-
-function window:setupTeleportButton(spellData, xPos, yPos)
-	local spellID = spellData.spellID
-	spellData.button = CreateFrame("button", nil, mainFrame, "SecureActionButtonTemplate")
-    local button = spellData.button
-	button.spellData = spellData
-    button.texture = button:CreateTexture()
-    button.texture:SetAllPoints(button)
-    local name, _, icon = GetSpellInfo(spellID)
-	--print(name, spellID, xPos, yPos)
-    button.texture:SetTexture(spellData.icon)
-
-    button:SetWidth(size)
-    button:SetHeight(size)
-    button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
-	button:SetPoint("CENTER", mainFrame, "CENTER", xPos, yPos)
-	button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
-
-	local overlayText = button:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
-	button.overlayText = overlayText
-	overlayText:SetWidth(button:GetWidth())
-	overlayText:SetHeight(20)
-	overlayText:SetFont(overlayText:GetFont(),17,"OUTLINE")
-	overlayText:SetPoint("TOP", button, "TOP", 0, -5)
-	overlayText:SetText(spellData.shortName)
-
-	button.ChangeIsKnown = function (self)
-		if self.spellData.isKnown then
-			self:SetAttribute("type", "spell")
-			self:SetAttribute("spell", self.spellData.spellID)
-			self.texture:SetDesaturated(false)
-		else
-			self.texture:SetDesaturated(true)
-		end
 	end
 end
 
