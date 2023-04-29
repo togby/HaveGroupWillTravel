@@ -4,26 +4,27 @@ local addonName, addon = ...
 addon.UIWindows.TeleportWindowFrame = {}
 local window = addon.UIWindows.TeleportWindowFrame
 
-local MainFrame
+local mainFrame
 
 local size = 50
 
 -- All currently known(by Oskar) dungeon teleporter ID's
 -- Tables automitically sort tables by key value, so below is not how they will generate in game
-local dungeons = addon.data.DungeonTeleportersByExpansion()
+local dungeonsByExpansion = addon.data.DungeonTeleportersByExpansion()
 
 
 function window:SetupWindow()
-    local frame, Button, fs -- temps used below
+    local frame, button, fs -- temps used below
 	-- main frame
-	MainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    MainFrame:SetMouseClickEnabled(true)
-	MainFrame:SetMouseMotionEnabled(true)
-	MainFrame:SetFrameStrata("MEDIUM")
-	MainFrame:SetMovable(true)
-	MainFrame:SetToplevel(true)
-	MainFrame:RegisterEvent("ADDON_LOADED")
-	MainFrame:SetScript("OnEvent", function(self, event, ...)
+	mainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+    mainFrame:Hide()
+    mainFrame:SetMouseClickEnabled()
+	mainFrame:SetMouseMotionEnabled()
+	mainFrame:SetFrameStrata("MEDIUM")
+	mainFrame:SetMovable(true)
+	mainFrame:SetToplevel(true)
+	mainFrame:RegisterEvent("ADDON_LOADED")
+	mainFrame:SetScript("OnEvent", function(self, event, ...)
 		if (event == "ADDON_LOADED") and select(1,...) == addonName then
 			addon.profile = HaveGroupWillTravelDB
 			window:LoadFramePosition()
@@ -32,39 +33,38 @@ function window:SetupWindow()
 	end)
 	-- Size of background
 	local sizeOfBackground = size*1.5
-	MainFrame:SetWidth(sizeOfBackground)
-	MainFrame:SetHeight(sizeOfBackground)
+	mainFrame:SetWidth(sizeOfBackground)
+	mainFrame:SetHeight(sizeOfBackground)
 
 	-- button size
 	local backdropSize = size/2
 	local backdropInsets = backdropSize/4
-    MainFrame:SetBackdrop( {
+    mainFrame:SetBackdrop( {
 		bgFile = "Interface\\Buttons\\WHITE8X8",
 		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = backdropSize, edgeSize = backdropSize,
 		insets = { left = backdropInsets, right = backdropInsets, top = backdropInsets, bottom = backdropInsets}
 	})
     local BorderColor = {r = 0,g = 0,b = 0, a = 0.85}
     local BackgroundColor = {r = 0.1,g = 0,b = 0, a = 1}
-	MainFrame:SetBackdropColor(BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a)
-	MainFrame:SetBackdropBorderColor(BorderColor.r, BorderColor.g, BorderColor.b, BorderColor.a)
+	mainFrame:SetBackdropColor(BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a)
+	mainFrame:SetBackdropBorderColor(BorderColor.r, BorderColor.g, BorderColor.b, BorderColor.a)
 
-    --MainFrame:Show()
-    MainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+    mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 
 
-    MainFrame:SetScript("OnMouseDown",function(self, Button)
-		if ( Button == "LeftButton" ) then
+    mainFrame:SetScript("OnMouseDown",function(self, button)
+		if ( button == "LeftButton" ) then
 			self:StartMoving()
 		end
 	end)
-	MainFrame:SetScript("OnMouseUp",function(self, Button)
-		if ( Button == "LeftButton" ) then
+	mainFrame:SetScript("OnMouseUp",function(self, button)
+		if ( button == "LeftButton" ) then
 			self:StopMovingOrSizing()
 			window:SaveFramePosition()
 		end
 	end)
-	MainFrame:SetScript("OnHide",function(self) self:StopMovingOrSizing() end)
-	MainFrame:SetClampedToScreen(true)
+	mainFrame:SetScript("OnHide",function(self) self:StopMovingOrSizing() end)
+	mainFrame:SetClampedToScreen(true)
 
     window:setupTeleportButtons()
 end
@@ -72,7 +72,7 @@ end
 function window:setupTeleportButtons()
 	local yPos = 0
 	local xPos
-	for exp, spells in pairs(dungeons) do
+	for exp, spells in pairs(dungeonsByExpansion) do
 		xPos = 0
 		for _, spell in ipairs(spells) do
 			window:setupTeleportButton(spell, xPos, yPos)
@@ -80,37 +80,34 @@ function window:setupTeleportButtons()
 		end
 		yPos = yPos - size
 	end
-
 end
 
 function window:setupTeleportButton(spellData, xPos, yPos)
 	local spellID = spellData.spellID
-	spellData.Button = CreateFrame("Button", nil, MainFrame, "SecureActionButtonTemplate")
-    local Button = spellData.Button
-	Button.spellData = spellData
-    Button.texture = Button:CreateTexture()
-    Button.texture:SetAllPoints(Button)
+	spellData.button = CreateFrame("button", nil, mainFrame, "SecureActionButtonTemplate")
+    local button = spellData.button
+	button.spellData = spellData
+    button.texture = button:CreateTexture()
+    button.texture:SetAllPoints(button)
     local name, _, icon = GetSpellInfo(spellID)
 	--print(name, spellID, xPos, yPos)
-    Button.texture:SetTexture(spellData.icon)
+    button.texture:SetTexture(spellData.icon)
 
-    Button:SetWidth(size)
-    Button:SetHeight(size)
-    Button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
-	Button:SetPoint("CENTER", MainFrame, "CENTER", xPos, yPos)
-	Button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
+    button:SetWidth(size)
+    button:SetHeight(size)
+    button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
+	button:SetPoint("CENTER", mainFrame, "CENTER", xPos, yPos)
+	button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
 
-	local overlayText = Button:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
-	Button.overlayText = overlayText
-	overlayText:SetWidth(Button:GetWidth())
+	local overlayText = button:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
+	button.overlayText = overlayText
+	overlayText:SetWidth(button:GetWidth())
 	overlayText:SetHeight(20)
 	overlayText:SetFont(overlayText:GetFont(),17,"OUTLINE")
-	overlayText:SetPoint("TOP", Button, "TOP", 0, -5)
+	overlayText:SetPoint("TOP", button, "TOP", 0, -5)
 	overlayText:SetText(spellData.shortName)
-	overlayText:Show()
-    Button:Show()
 
-	Button.ChangeIsKnown = function (self)
+	button.ChangeIsKnown = function (self)
 		if self.spellData.isKnown then
 			self:SetAttribute("type", "spell")
 			self:SetAttribute("spell", self.spellData.spellID)
@@ -122,16 +119,16 @@ function window:setupTeleportButton(spellData, xPos, yPos)
 end
 
 function window:SaveFramePosition()
-	addon.profile.MainFramePosX = MainFrame:GetLeft()
-	addon.profile.MainFramePosY = MainFrame:GetTop()
+	addon.profile.mainFramePosX = mainFrame:GetLeft()
+	addon.profile.mainFramePosY = mainFrame:GetTop()
 end
 
 function window:LoadFramePosition()
-	MainFrame:ClearAllPoints()
-	if (addon.profile.MainFramePosX or 0 ~= 0) or (addon.profile.MainFramePosY or 0 ~= 0) then
-		MainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", addon.profile.MainFramePosX, addon.profile.MainFramePosY)
+	mainFrame:ClearAllPoints()
+	if (addon.profile.mainFramePosX or 0 ~= 0) or (addon.profile.mainFramePosY or 0 ~= 0) then
+		mainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", addon.profile.mainFramePosX, addon.profile.mainFramePosY)
 	else
-		MainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+		mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 	end
 end
 
@@ -140,16 +137,16 @@ function window:Show()
 	if (InCombatLockdown()) then
 		return
 	end
-	ShowUIPanel(MainFrame)
+	ShowUIPanel(mainFrame)
 end
 
 function window:Hide()
 	if (InCombatLockdown()) then
 		return
 	end
-	HideUIPanel(MainFrame)
+	HideUIPanel(mainFrame)
 end
 
 function window:isWindowHidden()
-	return MainFrame:IsShown() == false
+	return mainFrame:IsShown() == false
 end
