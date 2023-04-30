@@ -86,8 +86,6 @@ function window:setupTeleportButtons()
 		windowHeight = windowHeight + size
 	end
 	windowWidth = windowWidth - windowMargin * 2
-	print("windowWidth", -windowWidth)
-	print("windowHeight", windowHeight)
 	mainFrame:SetWidth(-windowWidth)
 	mainFrame:SetHeight(windowHeight)
 end
