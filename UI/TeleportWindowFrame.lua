@@ -17,7 +17,7 @@ function window:SetupWindow()
     local frame, button, fs -- temps used below
 	-- main frame
 	mainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    --mainFrame:Hide()
+    mainFrame:Hide()
 
     mainFrame:SetMouseClickEnabled()
 	mainFrame:SetMouseMotionEnabled()
