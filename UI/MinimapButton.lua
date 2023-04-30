@@ -4,8 +4,9 @@ local MinimapButton = CreateFrame('Button', nil, Minimap)
 
 local iconPath = "Interface/Icons/spell_arcane_teleportironforge"
 
+local LibDataBroker = LibStub and LibStub:GetLibrary("LibDataBroker-1.1", true)
+
 function MinimapButton:Load()
-    print("Loaded")
 	self:SetWidth(31); self:SetHeight(31)
 	self:SetFrameLevel(8)
 	self:SetFrameStrata("MEDIUM")
@@ -33,15 +34,17 @@ function MinimapButton:Load()
 	self:SetScript('OnClick', self.OnClick)
 	self:Show()
 	-- For Titan etc
-	LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject(addonName, {
-		type = "launcher",
-		text = addonName,
-		icon = iconPath,
-		OnTooltipShow = function(tooltip)
-			MinimapButton:OnTooltipShow(tooltip)
-		end,
-		OnClick = MinimapButton.OnClick,
-	})
+	if LibDataBroker then
+		LibDataBroker:NewDataObject(addonName, {
+			type = "launcher",
+			text = addonName,
+			icon = iconPath,
+			OnTooltipShow = function(tooltip)
+				MinimapButton:OnTooltipShow(tooltip)
+			end,
+			OnClick = MinimapButton.OnClick,
+		})
+	end
 end
 
 
