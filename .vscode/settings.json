@@ -33,6 +33,10 @@
         "GameTooltip",
         "GetCursorPosition",
         "CreateFramePoolCollection",
-        "CreateFramePool"
+        "CreateFramePool",
+        "InspectFrame",
+        "UNKNOWN",
+        "LE_PARTY_CATEGORY_HOME",
+        "LE_PARTY_CATEGORY_INSTANCE"
     ]
 }
