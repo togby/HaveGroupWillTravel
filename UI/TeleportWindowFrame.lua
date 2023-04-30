@@ -8,8 +8,7 @@ local mainFrame
 
 local size = 50
 local windowMargin = 20
--- All currently known(by Oskar) dungeon teleporter ID's
--- Tables automitically sort tables by key value, so below is not how they will generate in game
+
 local dungeonsByExpansion = addon.data.DungeonTeleportersByExpansion()
 
 
@@ -78,7 +77,7 @@ function window:setupTeleportButtons()
 	for _, expansion in pairs(dungeonsByExpansion) do
 		xPos = -windowMargin
 		for _, spellData in ipairs(expansion) do
-			spellData.button = addon.FrameFactory:CreateTeleportButtonForSpellData(spellData, mainFrame, size, xPos, yPos)
+			addon.FrameFactory:CreateTeleportButtonForSpellData(spellData, mainFrame, size, xPos, yPos)
 			xPos = xPos - size
 			windowWidth = windowWidth < xPos and windowWidth or xPos
 		end
