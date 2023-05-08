@@ -8,5 +8,5 @@ addon:SetupFrames()
 SLASH_HaveGroupWillTravel1 = "/hgwt"
 SLASH_HaveGroupWillTravel2 = "/HaveGroupWillTravel"
 SlashCmdList["HaveGroupWillTravel"] = function(msg)
-   addon:ShowWindow("SettingsWindow")
+   addon:ToggleWindow("TeleportWindowFrame")
 end
