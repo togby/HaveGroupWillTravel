@@ -55,6 +55,7 @@ CreateDungeonTeleportData(393256, "DF",      "Ruby Life Pools",                 
 CreateDungeonTeleportData(393273, "DF",      "Algeth'ar Academy",                "AA")
 CreateDungeonTeleportData(393279, "DF",      "The Azure Vault",                  "TAV")
 CreateDungeonTeleportData(393262, "DF",      "The Nokhud Offensive",             "TNO")
+CreateDungeonTeleportData(393267, "DF",      "Brackenhide Hollow",               "BH")
 CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
 CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
 CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW")
