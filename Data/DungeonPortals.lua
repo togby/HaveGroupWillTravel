@@ -56,6 +56,7 @@ CreateDungeonTeleportData(393273, "DF",      "Algeth'ar Academy",               
 CreateDungeonTeleportData(393279, "DF",      "The Azure Vault",                  "TAV")
 CreateDungeonTeleportData(393262, "DF",      "The Nokhud Offensive",             "TNO")
 CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
+CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
 CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW")
 CreateDungeonTeleportData(354463, "SL",      "Plaguefall",                       "PF")
 CreateDungeonTeleportData(354464, "SL",      "Mists of Tirna Scithe",            "MoTS")
