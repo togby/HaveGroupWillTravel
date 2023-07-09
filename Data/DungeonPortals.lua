@@ -30,10 +30,10 @@ addon.data.DungeonTeleportersByExpansion = function()
     teleportersByExpansion["CurrentSeason"] = {}
 
     for _, value in pairs(data.DungeonTeleporters) do
-        teleportersByExpansion[value.expansion] = teleportersByExpansion[value.expansion] or {}
         if currentSeason[value.spellID] then
             table.insert(teleportersByExpansion["CurrentSeason"], value)
         else
+            teleportersByExpansion[value.expansion] = teleportersByExpansion[value.expansion] or {}
             table.insert(teleportersByExpansion[value.expansion], value)
         end
     end
