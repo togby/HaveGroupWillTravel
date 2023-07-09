@@ -10,7 +10,7 @@ function MinimapButton:Load()
 	self:SetWidth(31); self:SetHeight(31)
 	self:SetFrameLevel(8)
 	self:SetFrameStrata("MEDIUM")
-	self:RegisterForClicks('anyUp')
+	self:RegisterForClicks('AnyUp')
 	self:RegisterForDrag('LeftButton')
 	self:SetHighlightTexture('Interface/Minimap/UI-Minimap-ZoomButton-Highlight')
 
@@ -33,7 +33,7 @@ function MinimapButton:Load()
 	self:SetScript('OnLeave', self.OnLeave)
 	self:SetScript('OnClick', self.OnClick)
 	self:Show()
-	-- For Titan etc
+	-- For Titan panel etc
 	if LibDataBroker then
 		LibDataBroker:NewDataObject(addonName, {
 			type = "launcher",
@@ -106,13 +106,13 @@ function MinimapButton:OnUpdate()
 	local px, py = GetCursorPosition()
 	local scale = Minimap:GetEffectiveScale()
 	px, py = px / scale, py / scale
-	RaidBuffStatus.db.profile.MiniMapAngle = math.deg(math.atan2(py - my, px - mx)) % 360
+	addon.profile.MiniMapAngle = math.deg(math.atan2(py - my, px - mx)) % 360
 	self:UpdatePosition()
 end
 
 
 function MinimapButton:UpdatePosition()
-	local angle = math.rad(RaidBuffStatus.db.profile.MiniMapAngle)
+	local angle = math.rad(addon.profile.MiniMapAngle)
 	local cos = math.cos(angle)
 	local sin = math.sin(angle)
 	local minimapShape = GetMinimapShape and GetMinimapShape() or 'ROUND'

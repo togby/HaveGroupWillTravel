@@ -18,7 +18,6 @@ function factory:CreateTeleportButtonForSpellData(spellData, parent, size,xPos, 
     button.texture = button:CreateTexture()
     button.texture:SetAllPoints(button)
     
-	--print(name, spellID, xPos, yPos)
 	button:SetPoint("TOPRIGHT", parent, "TOPRIGHT", xPos, yPos)
     button.texture:SetTexture(spellData.icon)
 

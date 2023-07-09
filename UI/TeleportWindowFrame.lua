@@ -13,7 +13,6 @@ local dungeonsByExpansion = addon.data.DungeonTeleportersByExpansion()
 
 
 function window:SetupWindow()
-    local frame, button, fs -- temps used below
 	-- main frame
 	mainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
     mainFrame:Hide()
@@ -74,9 +73,16 @@ function window:setupTeleportButtons()
 	local xPos
 	local windowWidth = 0
 	local windowHeight = windowMargin * 2
-	for _, expansion in pairs(dungeonsByExpansion) do
+	for expansionName, dungeonInExpansion in pairs(dungeonsByExpansion) do
 		xPos = -windowMargin
-		for _, spellData in ipairs(expansion) do
+		local overlayText = mainFrame:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
+		overlayText:SetWidth(100)
+		overlayText:SetHeight(20)
+		overlayText:SetFont(overlayText:GetFont(),17,"OUTLINE")
+		overlayText:SetPoint("TOPRIGHT", mainFrame, "TOPRIGHT", xPos, yPos)
+		overlayText:SetText(expansionName)
+		xPos = xPos - 100
+		for _, spellData in ipairs(dungeonInExpansion) do
 			addon.FrameFactory:CreateTeleportButtonForSpellData(spellData, mainFrame, size, xPos, yPos)
 			xPos = xPos - size
 			windowWidth = windowWidth < xPos and windowWidth or xPos
