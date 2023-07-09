@@ -57,7 +57,7 @@ local function CreateDungeonTeleportData(spellID, expansion, dungeonFullName, du
     return data
 end
 
-CreateDungeonTeleportData(410080, "CATA",     "Feehold",                         "VP")'
+CreateDungeonTeleportData(410080, "CATA",    "Vortex Pinnacle",                  "VP")
 CreateDungeonTeleportData(131204, "MOP",     "Temple of the Jade Serpent",       "TotJS")
 CreateDungeonTeleportData(159899, "WOD",     "Shadowmoon Burial Grounds",        "SBG")
 CreateDungeonTeleportData(159900, "WOD",     "Grimrail Depot",                   "DG")
