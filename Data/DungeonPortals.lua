@@ -60,13 +60,14 @@ local function CreateDungeonTeleportData(spellID, expansion, dungeonFullName, du
     return data
 end
 
-CreateDungeonTeleportData(410080, "Cata",    "The Vortex Pinnacle",             "tVP")
+CreateDungeonTeleportData(410080, "CATA",    "Vortex Pinnacle",                  "VP")
 CreateDungeonTeleportData(131204, "MOP",     "Temple of the Jade Serpent",       "TotJS")
 CreateDungeonTeleportData(159899, "WOD",     "Shadowmoon Burial Grounds",        "SBG")
 CreateDungeonTeleportData(159900, "WOD",     "Grimrail Depot",                   "DG")
 CreateDungeonTeleportData(159896, "WOD",     "Iron Docks",                       "ID")
 CreateDungeonTeleportData(373262, "LEGION",  "Karazhan",                         "KZ")
 CreateDungeonTeleportData(393766, "LEGION",  "Court of Stars",                   "CoS")
+CreateDungeonTeleportData(393764, "LEGION",  "Halls of Valor",                   "HoV")
 CreateDungeonTeleportData(410078, "LEGION",  "Neltharion's Lair",                "NL")
 CreateDungeonTeleportData(393256, "DF",      "Ruby Life Pools",                  "RLP")
 CreateDungeonTeleportData(393273, "DF",      "Algeth'ar Academy",                "AA")
@@ -77,8 +78,8 @@ CreateDungeonTeleportData(396130, "DF",      "Halls of Infusion",               
 CreateDungeonTeleportData(396128, "DF",      "Neltharus",                        "Nelt")
 CreateDungeonTeleportData(396127, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
 CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
-CreateDungeonTeleportData(410071, "BFA",     "Freehold",                         "FH")
-CreateDungeonTeleportData(410074, "BFA",     "The Underrot",                     "tUR")
+CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
+CreateDungeonTeleportData(410074, "BFA",     "Underrot",                         "UR")
 CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW")
 CreateDungeonTeleportData(354463, "SL",      "Plaguefall",                       "PF")
 CreateDungeonTeleportData(354464, "SL",      "Mists of Tirna Scithe",            "MoTS")
