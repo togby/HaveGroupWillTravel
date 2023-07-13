@@ -14,7 +14,7 @@ local currentSeason = {
     [410078] = true, -- Neltharion's Lair
     [410074] = true, -- The Underrot
     [396130] = true, -- Halls of Infusion
-    [396128] = true, -- Neltharus
+    [393276] = true, -- Neltharus
     [396127] = true, -- Uldaman: Legacy of Tyr
 }
 
@@ -75,7 +75,7 @@ CreateDungeonTeleportData(393279, "DF",      "The Azure Vault",                 
 CreateDungeonTeleportData(393262, "DF",      "The Nokhud Offensive",             "TNO")
 CreateDungeonTeleportData(393267, "DF",      "Brackenhide Hollow",               "BH")
 CreateDungeonTeleportData(396130, "DF",      "Halls of Infusion",                "HoI")
-CreateDungeonTeleportData(396128, "DF",      "Neltharus",                        "Nelt")
+CreateDungeonTeleportData(393276, "DF",      "Neltharus",                        "Nelt")
 CreateDungeonTeleportData(396127, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
 CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
 CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
