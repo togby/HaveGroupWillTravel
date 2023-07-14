@@ -15,7 +15,7 @@ local currentSeason = {
     [410074] = true, -- The Underrot
     [393283] = true, -- Halls of Infusion
     [393276] = true, -- Neltharus
-    [396127] = true, -- Uldaman: Legacy of Tyr
+    [393222] = true, -- Uldaman: Legacy of Tyr
 }
 
 addon:RegisterCallback("AddonLoaded", function ()
@@ -88,7 +88,7 @@ CreateDungeonTeleportData(393262, "DF",      "The Nokhud Offensive",            
 CreateDungeonTeleportData(393267, "DF",      "Brackenhide Hollow",               "BH")
 CreateDungeonTeleportData(393283, "DF",      "Halls of Infusion",                "HoI")
 CreateDungeonTeleportData(393276, "DF",      "Neltharus",                        "N")
-CreateDungeonTeleportData(396127, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
+CreateDungeonTeleportData(393222, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
 CreateDungeonTeleportData(2061,   "TEST",    "Hearthstone",                      "HTEST")
 
 
