@@ -69,14 +69,6 @@ CreateDungeonTeleportData(373262, "LEGION",  "Karazhan",                        
 CreateDungeonTeleportData(393766, "LEGION",  "Court of Stars",                   "CoS")
 CreateDungeonTeleportData(393764, "LEGION",  "Halls of Valor",                   "HoV")
 CreateDungeonTeleportData(410078, "LEGION",  "Neltharion's Lair",                "NL")
-CreateDungeonTeleportData(393256, "DF",      "Ruby Life Pools",                  "RLP")
-CreateDungeonTeleportData(393273, "DF",      "Algeth'ar Academy",                "AA")
-CreateDungeonTeleportData(393279, "DF",      "The Azure Vault",                  "TAV")
-CreateDungeonTeleportData(393262, "DF",      "The Nokhud Offensive",             "TNO")
-CreateDungeonTeleportData(393267, "DF",      "Brackenhide Hollow",               "BH")
-CreateDungeonTeleportData(393283, "DF",      "Halls of Infusion",                "HoI")
-CreateDungeonTeleportData(393276, "DF",      "Neltharus",                        "N")
-CreateDungeonTeleportData(396127, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
 CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
 CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
 CreateDungeonTeleportData(410074, "BFA",     "Underrot",                         "UR")
@@ -89,7 +81,16 @@ CreateDungeonTeleportData(354467, "SL",      "Theater of Pain",                 
 CreateDungeonTeleportData(354468, "SL",      "De Other Side",                    "DOS")
 CreateDungeonTeleportData(354469, "SL",      "Sanguine Depths",                  "SD")
 CreateDungeonTeleportData(367416, "SL",      "Tazavesh, the Veiled Market",      "Ttvm")
+CreateDungeonTeleportData(393256, "DF",      "Ruby Life Pools",                  "RLP")
+CreateDungeonTeleportData(393273, "DF",      "Algeth'ar Academy",                "AA")
+CreateDungeonTeleportData(393279, "DF",      "The Azure Vault",                  "TAV")
+CreateDungeonTeleportData(393262, "DF",      "The Nokhud Offensive",             "TNO")
+CreateDungeonTeleportData(393267, "DF",      "Brackenhide Hollow",               "BH")
+CreateDungeonTeleportData(393283, "DF",      "Halls of Infusion",                "HoI")
+CreateDungeonTeleportData(393276, "DF",      "Neltharus",                        "N")
+CreateDungeonTeleportData(396127, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
 CreateDungeonTeleportData(2061,   "TEST",    "Hearthstone",                      "HTEST")
+
 
 for key, value in pairs(DungeonsTeleporters) do
     data.EveryTeleporter[key] = value
