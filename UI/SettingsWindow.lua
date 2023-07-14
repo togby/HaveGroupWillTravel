@@ -37,7 +37,7 @@ function window:SetupWindow()
 		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = backdropSize, edgeSize = backdropSize,
 		insets = { left = backdropInsets, right = backdropInsets, top = backdropInsets, bottom = backdropInsets}
 	})
-    local BorderColor = {r = 0,g = 0,b = 0, a = 0.85}
+    local BorderColor = {r = 0,g = 0,b = 0, a = 0.15}
     local BackgroundColor = {r = 0.1,g = 0,b = 0, a = 1}
 	mainFrame:SetBackdropColor(BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a)
 	mainFrame:SetBackdropBorderColor(BorderColor.r, BorderColor.g, BorderColor.b, BorderColor.a)
