@@ -109,7 +109,6 @@ function window:LoadFramePosition()
 	end
 end
 
-
 function window:Show()
 	if (InCombatLockdown()) then
 		return
