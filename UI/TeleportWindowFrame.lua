@@ -75,7 +75,7 @@ function window:setupTeleportButtons()
 	local windowHeight = windowMargin * 2
 	for expansionName, dungeonInExpansion in pairs(dungeonsByExpansion) do
 		xPos = -windowMargin
-		local overlayText = mainFrame:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
+		local overlayText = mainFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
 		overlayText:SetWidth(100)
 		overlayText:SetHeight(20)
 		overlayText:SetFont(overlayText:GetFont(),17,"OUTLINE")
