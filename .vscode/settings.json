@@ -29,6 +29,14 @@
         "NOT_BOUND",
         "IsSecureCmd",
         "NUM_CHAT_WINDOWS",
-        "ChatEdit_GetActiveWindow"
+        "ChatEdit_GetActiveWindow",
+        "GameTooltip",
+        "GetCursorPosition",
+        "CreateFramePoolCollection",
+        "CreateFramePool",
+        "InspectFrame",
+        "UNKNOWN",
+        "LE_PARTY_CATEGORY_HOME",
+        "LE_PARTY_CATEGORY_INSTANCE"
     ]
 }

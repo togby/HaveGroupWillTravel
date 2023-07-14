@@ -1,26 +1,19 @@
 local addonName, addon = ...
 
 
-addon.UIWindows.TeleportWindowFrame = {}
-local window = addon.UIWindows.TeleportWindowFrame
-
-local mainFrame
-
-local size = 50
-local windowMargin = 20
-
-local dungeonsByExpansion = addon.data.DungeonTeleportersByExpansion()
-
+addon.UIWindows.SettingsWindow = {}
+local window = addon.UIWindows.SettingsWindow
 
 local size = 200
 
+local mainFrame
+
+
 function window:SetupWindow()
+    local frame, button, fs -- temps used below
 	-- main frame
 	mainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    mainFrame:Hide()
-
-    mainFrame:SetMouseClickEnabled()
-	mainFrame:SetMouseMotionEnabled()
+    mainFrame:EnableMouse(true)
 	mainFrame:SetFrameStrata("MEDIUM")
 	mainFrame:SetMovable(true)
 	mainFrame:SetToplevel(true)
@@ -29,7 +22,6 @@ function window:SetupWindow()
 		if (event == "ADDON_LOADED") and select(1,...) == addonName then
 			addon.profile = HaveGroupWillTravelDB
 			window:LoadFramePosition()
-			addon:EmitEvent("AddonLoaded")
 		end
 	end)
 	-- Size of background
@@ -53,59 +45,39 @@ function window:SetupWindow()
     mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 
 
-    mainFrame:SetScript("OnMouseDown",function(self, button)
-		if ( button == "LeftButton" ) then
+    mainFrame:SetScript("OnMouseDown",function(self, Button)
+		if ( Button == "LeftButton" ) then
 			self:StartMoving()
 		end
 	end)
-	mainFrame:SetScript("OnMouseUp",function(self, button)
-		if ( button == "LeftButton" ) then
+	mainFrame:SetScript("OnMouseUp",function(self, Button)
+		if ( Button == "LeftButton" ) then
 			self:StopMovingOrSizing()
 			window:SaveFramePosition()
 		end
 	end)
 	mainFrame:SetScript("OnHide",function(self) self:StopMovingOrSizing() end)
 	mainFrame:SetClampedToScreen(true)
+	button = CreateFrame("Button", nil, mainFrame, "UIPanelCloseButton")
 
-    window:setupTeleportButtons()
-end
-
-function window:setupTeleportButtons()
-	local yPos = -windowMargin
-	local xPos
-	local windowWidth = 0
-	local windowHeight = windowMargin * 2
-	for expansionName, dungeonInExpansion in pairs(dungeonsByExpansion) do
-		xPos = -windowMargin
-		local overlayText = mainFrame:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
-		overlayText:SetWidth(100)
-		overlayText:SetHeight(20)
-		overlayText:SetFont(overlayText:GetFont(),17,"OUTLINE")
-		overlayText:SetPoint("TOPRIGHT", mainFrame, "TOPRIGHT", xPos, yPos)
-		overlayText:SetText(expansionName)
-		xPos = xPos - 100
-		for _, spellData in ipairs(dungeonInExpansion) do
-			addon.FrameFactory:CreateTeleportButtonForSpellData(spellData, mainFrame, size, xPos, yPos)
-			xPos = xPos - size
-			windowWidth = windowWidth < xPos and windowWidth or xPos
-		end
-		yPos = yPos - size
-		windowHeight = windowHeight + size
-	end
-	windowWidth = windowWidth - windowMargin * 2
-	mainFrame:SetWidth(-windowWidth)
-	mainFrame:SetHeight(windowHeight)
+    button:SetWidth(40)
+    button:SetHeight(40)
+	button:SetPoint("TOPRIGHT", mainFrame, "TOPRIGHT", -10, -10)
+	button:SetScript("OnMouseDown",function()
+		window:Hide()
+	end)
+	window:Hide()
 end
 
 function window:SaveFramePosition()
-	addon.profile.mainFramePosX = mainFrame:GetLeft()
-	addon.profile.mainFramePosY = mainFrame:GetTop()
+	addon.profile.SettingsFramePosX = mainFrame:GetLeft()
+	addon.profile.SettingsFramePosY = mainFrame:GetTop()
 end
 
 function window:LoadFramePosition()
 	mainFrame:ClearAllPoints()
-	if (addon.profile.mainFramePosX or 0 ~= 0) or (addon.profile.mainFramePosY or 0 ~= 0) then
-		mainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", addon.profile.mainFramePosX, addon.profile.mainFramePosY)
+	if (addon.profile.SettingsFramePosX or 0 ~= 0) or (addon.profile.SettingsFramePosY or 0 ~= 0) then
+		mainFrame:SetPoint("TOPLEFT", UIParent,"BOTTOMLEFT", addon.profile.SettingsFramePosX, addon.profile.SettingsFramePosY)
 	else
 		mainFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 	end

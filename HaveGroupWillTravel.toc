@@ -4,9 +4,14 @@
 
 Event.lua
 
+Data/DungeonPortals.lua
+
 UI/UI.lua
+UI/SettingsWindow.lua
 UI/TeleportWindowFrame.lua
 
-
+UI/Views/GridView.lua
+UI/MinimapButton.lua
+UI/FrameFactory.lua
 
 Core.lua
