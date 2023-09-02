@@ -7,10 +7,15 @@ local factory = addon.FrameFactory
 local teleportButtonPool = CreateFramePool("Button", nil, "SecureActionButtonTemplate")
 local teleportCooldownPool = CreateFramePool("Cooldown", nil, "CooldownFrameTemplate")
 
+local teleportTooltip = GameTooltip
+
+local teleportTooltipOffsetX = 0;
+local teleportTooltipOffsetY = 0;
+
+
 local function CooldownUpdate(self, spellId)
 	local start, duration = GetSpellCooldown(spellId)
 	self:SetCooldown(start, duration)
-	--self:SetCooldown(GetTime(), 60)
 end
 
 
@@ -58,6 +63,18 @@ function factory:CreateTeleportButtonForSpellData(spellData, parent, size, xPos,
 			self.texture:SetDesaturated(true)
 		end
 	end
+
+
+	button:HookScript("OnEnter", function()
+        teleportTooltip:SetOwner(button, button, teleportTooltipOffsetX, teleportTooltipOffsetY)
+		teleportTooltip:SetHyperlink("spell:".. spellId)
+		teleportTooltip:Show()
+    end)
+    button:HookScript("OnLeave", function()
+        teleportTooltip:Hide()
+    end)
+
+
+
     return button
 end
-
