@@ -5,16 +5,23 @@ local factory = addon.FrameFactory
 
 
 local teleportButtonPool = CreateFramePool("Button", nil, "SecureActionButtonTemplate")
+local teleportCooldownPool = CreateFramePool("Cooldown", nil, "CooldownFrameTemplate")
+
+local function CooldownUpdate(self, spellId)
+	local start, duration = GetSpellCooldown(spellId)
+	self:SetCooldown(start, duration)
+	--self:SetCooldown(GetTime(), 60)
+end
 
 
-function factory:CreateTeleportButtonForSpellData(spellData, parent, size,xPos, yPos)
+function factory:CreateTeleportButtonForSpellData(spellData, parent, size, xPos, yPos)
 
     spellData.button = teleportButtonPool:Acquire()
     local button = spellData.button
 	button.spellData = spellData
     button:Show()
     button:SetParent(parent)
-    local spellID = spellData.spellID
+    local spellId = spellData.spellId
     button.texture = button:CreateTexture()
     button.texture:SetAllPoints(button)
     
@@ -25,6 +32,14 @@ function factory:CreateTeleportButtonForSpellData(spellData, parent, size,xPos, 
     button:SetHeight(size)
     button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight")
 	button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
+
+	local cooldown = teleportCooldownPool:Acquire()
+	button.cooldown = cooldown
+    cooldown:SetParent(button)
+	cooldown:SetAllPoints()
+	cooldown.UpdateFunction = function(self)
+		CooldownUpdate(self, spellId)
+	end
 
 	local overlayText = button:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
 	button.overlayText = overlayText
@@ -37,7 +52,7 @@ function factory:CreateTeleportButtonForSpellData(spellData, parent, size,xPos, 
 	button.ChangeIsKnown = function (self)
 		if self.spellData.isKnown then
 			self:SetAttribute("type", "spell")
-			self:SetAttribute("spell", self.spellData.spellID)
+			self:SetAttribute("spell", self.spellData.spellId)
 			self.texture:SetDesaturated(false)
 		else
 			self.texture:SetDesaturated(true)

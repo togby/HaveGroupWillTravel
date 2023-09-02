@@ -20,12 +20,19 @@ local currentSeason = {
 
 addon:RegisterCallback("AddonLoaded", function ()
     C_Timer.After(10, function ()
-        for key, value in pairs(data.EveryTeleporter) do
-            value.isKnown = IsSpellKnown(value.spellID)
+        for _, value in pairs(data.EveryTeleporter) do
+            value.isKnown = IsSpellKnown(value.spellId)
 
             value.button:ChangeIsKnown()
         end
     end)
+
+    C_Timer.NewTicker(5, function ()
+        for _, value in pairs(data.EveryTeleporter) do
+            value.button.cooldown:UpdateFunction()
+        end
+    end)
+ 
 end)
 
 addon.data.DungeonTeleportersByExpansion = function()
@@ -33,7 +40,7 @@ addon.data.DungeonTeleportersByExpansion = function()
     teleportersByExpansion["CurrentSeason"] = {}
 
     for _, value in pairs(data.DungeonTeleporters) do
-        if currentSeason[value.spellID] then
+        if currentSeason[value.spellId] then
             table.insert(teleportersByExpansion["CurrentSeason"], value)
         else
             teleportersByExpansion[value.expansion] = teleportersByExpansion[value.expansion] or {}
@@ -44,19 +51,19 @@ addon.data.DungeonTeleportersByExpansion = function()
 end
 
 DungeonsTeleporters = {}
-local function CreateDungeonTeleportData(spellID, expansion, dungeonFullName, dungeonShortName)
+local function CreateDungeonTeleportData(spellId, expansion, dungeonFullName, dungeonShortName)
     local data = {}
-    data.spellID = spellID
+    data.spellId = spellId
     data.expansion = expansion
     data.fullName = dungeonFullName
     data.shortName = dungeonShortName
 
-    local name, _, icon = GetSpellInfo(spellID)
+    local name, _, icon = GetSpellInfo(spellId)
     data.name = name
     data.icon = icon
-    data.isKnown = IsSpellKnown(spellID)
+    data.isKnown = IsSpellKnown(spellId)
 
-    DungeonsTeleporters[spellID] = data
+    DungeonsTeleporters[spellId] = data
     return data
 end
 
