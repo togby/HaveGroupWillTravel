@@ -12,8 +12,6 @@ local windowMargin = 20
 local dungeonsByExpansion = addon.data.DungeonTeleportersByExpansion()
 
 
-local size = 200
-
 function window:SetupWindow()
 	-- main frame
 	mainFrame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
