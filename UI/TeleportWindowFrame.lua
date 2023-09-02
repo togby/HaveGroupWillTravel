@@ -45,8 +45,8 @@ function window:SetupWindow()
 		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", tile = true, tileSize = backdropSize, edgeSize = backdropSize,
 		insets = { left = backdropInsets, right = backdropInsets, top = backdropInsets, bottom = backdropInsets}
 	})
-    local BorderColor = {r = 0,g = 0,b = 0, a = 0.85}
-    local BackgroundColor = {r = 0.1,g = 0,b = 0, a = 0.75}
+    local BorderColor = {r = 0.1,g = 0.1,b = 0.1, a = 0.25}
+    local BackgroundColor = {r = 0,g = 0,b = 0.1, a = 0.3}
 	mainFrame:SetBackdropColor(BackgroundColor.r, BackgroundColor.g, BackgroundColor.b, BackgroundColor.a)
 	mainFrame:SetBackdropBorderColor(BorderColor.r, BorderColor.g, BorderColor.b, BorderColor.a)
 
@@ -77,7 +77,7 @@ function window:setupTeleportButtons()
 	local windowHeight = windowMargin * 2
 	for expansionName, dungeonInExpansion in pairs(dungeonsByExpansion) do
 		xPos = -windowMargin
-		local overlayText = mainFrame:CreateFontString(nil, "ARTWORK","GameFontNormalSmall")
+		local overlayText = mainFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
 		overlayText:SetWidth(100)
 		overlayText:SetHeight(20)
 		overlayText:SetFont(overlayText:GetFont(),17,"OUTLINE")
