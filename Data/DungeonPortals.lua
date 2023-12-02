@@ -8,7 +8,11 @@ data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
 local currentSeason = {
-    [424155] = true, -- Black Rook Hold
+    [424153] = true, -- Black Rook Hold
+    [159901] = true, -- The Everbloom
+    [424142] = true, -- Throne of the Tides
+    [424187] = true, -- Atal'Dazar
+    [424163] = true, -- Darkheart Thicket
 }
 
 addon:RegisterCallback("AddonLoaded", function ()
@@ -61,18 +65,22 @@ local function CreateDungeonTeleportData(spellId, expansion, dungeonFullName, du
 end
 
 CreateDungeonTeleportData(410080, "CATA",    "Vortex Pinnacle",                  "VP")
+CreateDungeonTeleportData(424142, "CATA",    "Throne of the Tides",              "TotT")
 CreateDungeonTeleportData(131204, "MOP",     "Temple of the Jade Serpent",       "TotJS")
 CreateDungeonTeleportData(159899, "WOD",     "Shadowmoon Burial Grounds",        "SBG")
 CreateDungeonTeleportData(159900, "WOD",     "Grimrail Depot",                   "DG")
 CreateDungeonTeleportData(159896, "WOD",     "Iron Docks",                       "ID")
+CreateDungeonTeleportData(159901, "WOD",     "The Everbloom",                    "EB")
 CreateDungeonTeleportData(373262, "LEGION",  "Karazhan",                         "KZ")
 CreateDungeonTeleportData(393766, "LEGION",  "Court of Stars",                   "CoS")
 CreateDungeonTeleportData(393764, "LEGION",  "Halls of Valor",                   "HoV")
 CreateDungeonTeleportData(410078, "LEGION",  "Neltharion's Lair",                "NL")
-CreateDungeonTeleportData(424155, "LEGION",  "Black Rook Hold",                  "BRH")
+CreateDungeonTeleportData(424153, "LEGION",  "Black Rook Hold",                  "BRH")
+CreateDungeonTeleportData(424163, "LEGION",  "Darkheart Thicket",                "DT")
 CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
 CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
 CreateDungeonTeleportData(410074, "BFA",     "Underrot",                         "UR")
+CreateDungeonTeleportData(424187, "BFA",     "Atal'Dazar",                       "A'D")
 CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW")
 CreateDungeonTeleportData(354463, "SL",      "Plaguefall",                       "PF")
 CreateDungeonTeleportData(354464, "SL",      "Mists of Tirna Scithe",            "MoTS")
