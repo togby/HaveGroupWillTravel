@@ -47,8 +47,6 @@ function MinimapButton:Load()
 	end
 end
 
-
-
 function MinimapButton:OnClick(button)
 	if button == 'LeftButton' then
 		addon:ToggleWindow("TeleportWindowFrame")
@@ -56,9 +54,6 @@ function MinimapButton:OnClick(button)
 		addon:ToggleWindow("SettingsWindow")
 	end
 end
-
-
-
 
 function MinimapButton:OnEnter()
 	if not self.dragging then

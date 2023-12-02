@@ -64,7 +64,6 @@ function factory:CreateTeleportButtonForSpellData(spellData, parent, size, xPos,
 		end
 	end
 
-
 	button:HookScript("OnEnter", function()
 		teleportTooltip:SetOwner(button, "ANCHOR_NONE")
 		teleportTooltip:SetHyperlink("spell:".. spellId)
