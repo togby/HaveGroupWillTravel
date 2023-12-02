@@ -8,14 +8,7 @@ data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
 local currentSeason = {
-    [393267] = true, -- Brackenhide Hollow
-    [410071] = true, -- Freehold
-    [410080] = true, -- The Vortex Pinnacle
-    [410078] = true, -- Neltharion's Lair
-    [410074] = true, -- The Underrot
-    [393283] = true, -- Halls of Infusion
-    [393276] = true, -- Neltharus
-    [393222] = true, -- Uldaman: Legacy of Tyr
+    [424155] = true, -- Black Rook Hold
 }
 
 addon:RegisterCallback("AddonLoaded", function ()
@@ -76,6 +69,7 @@ CreateDungeonTeleportData(373262, "LEGION",  "Karazhan",                        
 CreateDungeonTeleportData(393766, "LEGION",  "Court of Stars",                   "CoS")
 CreateDungeonTeleportData(393764, "LEGION",  "Halls of Valor",                   "HoV")
 CreateDungeonTeleportData(410078, "LEGION",  "Neltharion's Lair",                "NL")
+CreateDungeonTeleportData(424155, "LEGION",  "Black Rook Hold",                  "BRH")
 CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",              "O:M")
 CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
 CreateDungeonTeleportData(410074, "BFA",     "Underrot",                         "UR")
