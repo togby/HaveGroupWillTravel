@@ -13,6 +13,7 @@ local currentSeason = {
     [424142] = true, -- Throne of the Tides
     [424187] = true, -- Atal'Dazar
     [424163] = true, -- Darkheart Thicket
+    [424167] = true, -- Waycrest Manor
 }
 
 addon:RegisterCallback("AddonLoaded", function ()
@@ -81,6 +82,7 @@ CreateDungeonTeleportData(373274, "BFA",     "Operation: Mechagon",             
 CreateDungeonTeleportData(410071, "BFA",     "Feehold",                          "FH")
 CreateDungeonTeleportData(410074, "BFA",     "Underrot",                         "UR")
 CreateDungeonTeleportData(424187, "BFA",     "Atal'Dazar",                       "A'D")
+CreateDungeonTeleportData(424167, "BFA",     "Waycrest Manor",                   "WM")
 CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW")
 CreateDungeonTeleportData(354463, "SL",      "Plaguefall",                       "PF")
 CreateDungeonTeleportData(354464, "SL",      "Mists of Tirna Scithe",            "MoTS")
