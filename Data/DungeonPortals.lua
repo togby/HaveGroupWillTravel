@@ -14,6 +14,7 @@ local currentSeason = {
     [424187] = true, -- Atal'Dazar
     [424163] = true, -- Darkheart Thicket
     [424167] = true, -- Waycrest Manor
+    [424197] = true, -- Dawn of the Infinite
 }
 
 addon:RegisterCallback("AddonLoaded", function ()
@@ -100,6 +101,7 @@ CreateDungeonTeleportData(393267, "DF",      "Brackenhide Hollow",              
 CreateDungeonTeleportData(393283, "DF",      "Halls of Infusion",                "HoI")
 CreateDungeonTeleportData(393276, "DF",      "Neltharus",                        "N")
 CreateDungeonTeleportData(393222, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
+CreateDungeonTeleportData(424197, "DF",      "Dawn of the Infinite",             "DotI")
 CreateDungeonTeleportData(2061,   "TEST",    "Hearthstone",                      "HTEST")
 
 
