@@ -8,13 +8,14 @@ data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
 local currentSeason = {
-    [424153] = true, -- Black Rook Hold
-    [159901] = true, -- The Everbloom
-    [424142] = true, -- Throne of the Tides
-    [424187] = true, -- Atal'Dazar
-    [424163] = true, -- Darkheart Thicket
-    [424167] = true, -- Waycrest Manor
-    [424197] = true, -- Dawn of the Infinite
+    [393256] = true, -- Ruby Life Pools
+    [393273] = true, -- Algeth'ar Academy
+    [393279] = true, -- The Azure Vault
+    [393262] = true, -- The Nokhud Offensive
+    [393267] = true, -- Brackenhide Hollow
+    [393283] = true, -- Halls of Infusion
+    [393276] = true, -- Neltharus
+    [393222] = true, -- Uldaman: Legacy of Tyr
 }
 
 addon:RegisterCallback("AddonLoaded", function ()
@@ -57,7 +58,7 @@ local function CreateDungeonTeleportData(spellId, expansion, dungeonFullName, du
     data.fullName = dungeonFullName
     data.shortName = dungeonShortName
 
-    local name, _, icon = GetSpellInfo(spellId)
+    local name, _, icon = C_Spell.GetSpellInfo(spellId)
     data.name = name
     data.icon = icon
     data.isKnown = IsSpellKnown(spellId)
