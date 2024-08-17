@@ -14,8 +14,9 @@ local teleportTooltipOffsetY = 0;
 
 
 local function CooldownUpdate(self, spellId)
-	local start, duration = GetSpellCooldown(spellId)
-	self:SetCooldown(start, duration)
+	local spellCooldown = C_Spell.GetSpellCooldown(spellId)
+	
+	self:SetCooldown(spellCooldown.startTime, spellCooldown.duration)
 end
 
 
