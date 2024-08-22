@@ -8,16 +8,15 @@ data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
 local currentSeason = {
-    [393256] = true, -- Ruby Life Pools
-    [393273] = true, -- Algeth'ar Academy
-    [393279] = true, -- The Azure Vault
-    [393262] = true, -- The Nokhud Offensive
-    [393267] = true, -- Brackenhide Hollow
-    [393283] = true, -- Halls of Infusion
-    [393276] = true, -- Neltharus
-    [393222] = true, -- Uldaman: Legacy of Tyr
+    [354462] = true, -- The Necrotic Wake
+    [354464] = true, -- Mists of Tirna Scithe
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
 }
-
 addon:RegisterCallback("AddonLoaded", function ()
     C_Timer.After(10, function ()
         for _, value in pairs(data.EveryTeleporter) do
@@ -58,9 +57,8 @@ local function CreateDungeonTeleportData(spellId, expansion, dungeonFullName, du
     data.fullName = dungeonFullName
     data.shortName = dungeonShortName
 
-    local name, _, icon = C_Spell.GetSpellInfo(spellId)
-    data.name = name
-    data.icon = icon
+    data.name = C_Spell.GetSpellName(spellId)
+    data.icon = C_Spell.GetSpellTexture(spellId)
     data.isKnown = IsSpellKnown(spellId)
 
     DungeonsTeleporters[spellId] = data
@@ -103,7 +101,6 @@ CreateDungeonTeleportData(393283, "DF",      "Halls of Infusion",               
 CreateDungeonTeleportData(393276, "DF",      "Neltharus",                        "N")
 CreateDungeonTeleportData(393222, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
 CreateDungeonTeleportData(424197, "DF",      "Dawn of the Infinite",             "DotI")
-CreateDungeonTeleportData(2061,   "TEST",    "Hearthstone",                      "HTEST")
 
 
 for key, value in pairs(DungeonsTeleporters) do
