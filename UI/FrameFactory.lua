@@ -33,7 +33,6 @@ function factory:CreateTeleportButtonForSpellData(spellData, parent, size, xPos,
     
 	button:SetPoint("TOPRIGHT", parent, "TOPRIGHT", xPos, yPos)
     button.texture:SetTexture(spellData.icon)
-	print(spellData.icon)
 
     button:SetWidth(size)
     button:SetHeight(size)
