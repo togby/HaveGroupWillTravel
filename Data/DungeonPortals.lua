@@ -10,7 +10,7 @@ data.DungeonTeleporters = {}
 local currentSeason = {
     [354462] = true, -- The Necrotic Wake
     [354464] = true, -- Mists of Tirna Scithe
-    --[] = true, -- 
+    [445414] = true, -- Dawnbreaker
     --[] = true, -- 
     --[] = true, -- 
     --[] = true, -- 
@@ -101,6 +101,7 @@ CreateDungeonTeleportData(393283, "DF",      "Halls of Infusion",               
 CreateDungeonTeleportData(393276, "DF",      "Neltharus",                        "N")
 CreateDungeonTeleportData(393222, "DF",      "Uldaman: Legacy of Tyr",           "ULoT")
 CreateDungeonTeleportData(424197, "DF",      "Dawn of the Infinite",             "DotI")
+CreateDungeonTeleportData(445414, "tWW",     "Dawnbreaker",                      "Db")
 
 
 for key, value in pairs(DungeonsTeleporters) do
