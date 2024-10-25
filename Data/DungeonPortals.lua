@@ -12,7 +12,7 @@ local currentSeason = {
     [354464] = true, -- Mists of Tirna Scithe
     [445414] = true, -- Dawnbreaker
     [445269] = true, -- The Stonevault
-    --[] = true, -- 
+    [445416] = true, -- City of Threads
     --[] = true, -- 
     --[] = true, -- 
     --[] = true, -- 
@@ -103,6 +103,7 @@ CreateDungeonTeleportData(393222, "DF",      "Uldaman: Legacy of Tyr",          
 CreateDungeonTeleportData(424197, "DF",      "Dawn of the Infinite",             "DotI")
 CreateDungeonTeleportData(445414, "tWW",     "Dawnbreaker",                      "Db")
 CreateDungeonTeleportData(445269, "tWW",     "The Stonevault",                   "tSv")
+CreateDungeonTeleportData(445416, "tWW",     "City of Threads",                  "CoT")
 
 
 for key, value in pairs(DungeonsTeleporters) do
