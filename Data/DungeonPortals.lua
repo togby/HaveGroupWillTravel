@@ -13,7 +13,7 @@ local currentSeason = {
     [445414] = true, -- Dawnbreaker
     [445269] = true, -- The Stonevault
     [445416] = true, -- City of Threads
-    --[] = true, -- 
+    [445424] = true, -- Grim batol
     --[] = true, -- 
     --[] = true, -- 
 }
@@ -65,6 +65,7 @@ local function CreateDungeonTeleportData(spellId, expansion, dungeonFullName, du
     return data
 end
 
+CreateDungeonTeleportData(445424, "CATA",    "Grim batol",                      "GB")
 CreateDungeonTeleportData(410080, "CATA",    "Vortex Pinnacle",                  "VP")
 CreateDungeonTeleportData(424142, "CATA",    "Throne of the Tides",              "TotT")
 CreateDungeonTeleportData(131204, "MOP",     "Temple of the Jade Serpent",       "TotJS")
