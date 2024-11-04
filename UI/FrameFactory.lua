@@ -61,6 +61,8 @@ function factory:CreateTeleportButtonForSpellData(spellData, parent, size, xPos,
 			self:SetAttribute("spell", self.spellData.spellId)
 			self.texture:SetDesaturated(false)
 		else
+			self:SetAttribute("type", nil)
+			self:SetAttribute("spell", nil)
 			self.texture:SetDesaturated(true)
 		end
 	end
