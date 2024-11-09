@@ -14,8 +14,8 @@ local currentSeason = {
     [445269] = true, -- The Stonevault
     [445416] = true, -- City of Threads
     [445424] = true, -- Grim batol
-    [445418] = true, -- Siege of Boralus
-    --[] = true, -- 
+    [464256] = true, -- Siege of Boralus
+    [445417] = true, -- Ara-Kara, City of Echoes
 }
 addon:RegisterCallback("AddonLoaded", function ()
     C_Timer.After(10, function ()
@@ -84,7 +84,7 @@ CreateDungeonTeleportData(410071, "BFA",     "Feehold",                         
 CreateDungeonTeleportData(410074, "BFA",     "Underrot",                         "UR")
 CreateDungeonTeleportData(424187, "BFA",     "Atal'Dazar",                       "A'D")
 CreateDungeonTeleportData(424167, "BFA",     "Waycrest Manor",                   "WM")
-CreateDungeonTeleportData(445418, "BFA",     "Siege of Boralus",                 "SoB")
+CreateDungeonTeleportData(464256, "BFA",     "Siege of Boralus",                 "SoB")
 CreateDungeonTeleportData(354462, "SL",      "The Necrotic Wake",                "tNW")
 CreateDungeonTeleportData(354463, "SL",      "Plaguefall",                       "PF")
 CreateDungeonTeleportData(354464, "SL",      "Mists of Tirna Scithe",            "MoTS")
@@ -106,6 +106,7 @@ CreateDungeonTeleportData(424197, "DF",      "Dawn of the Infinite",            
 CreateDungeonTeleportData(445414, "tWW",     "Dawnbreaker",                      "Db")
 CreateDungeonTeleportData(445269, "tWW",     "The Stonevault",                   "tSv")
 CreateDungeonTeleportData(445416, "tWW",     "City of Threads",                  "CoT")
+CreateDungeonTeleportData(445417, "tWW",     "Ara-Kara, City of Echoes",         "AK")
 
 
 for key, value in pairs(DungeonsTeleporters) do
