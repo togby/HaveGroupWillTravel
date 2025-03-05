@@ -8,14 +8,14 @@ data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
 local currentSeason = {
-    [354462] = true, -- The Necrotic Wake
-    [354464] = true, -- Mists of Tirna Scithe
-    [445414] = true, -- Dawnbreaker
-    [445269] = true, -- The Stonevault
-    [445416] = true, -- City of Threads
-    [445424] = true, -- Grim batol
-    [464256] = true, -- Siege of Boralus
-    [445417] = true, -- Ara-Kara, City of Echoes
+    [354467] = true, -- Theater of Pain
+    [373274] = true, -- Operation: Mechagon
+    [] = true, -- 
+    [] = true, -- 
+    [] = true, -- 
+    [] = true, -- 
+    [] = true, -- 
+    [] = true, -- 
 }
 addon:RegisterCallback("AddonLoaded", function ()
     C_Timer.After(10, function ()

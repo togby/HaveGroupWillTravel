@@ -1,7 +1,7 @@
 ## Interface: 100002
 ## Title: Have Group Will Travel
 ## SavedVariables: HaveGroupWillTravelDB
-
+## Category-enUS: Portals
 Event.lua
 
 Data/DungeonPortals.lua
