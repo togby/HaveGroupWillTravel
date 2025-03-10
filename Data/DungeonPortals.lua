@@ -10,12 +10,12 @@ data.DungeonTeleporters = {}
 local currentSeason = {
     [354467] = true, -- Theater of Pain
     [373274] = true, -- Operation: Mechagon
-    [] = true, -- 
-    [] = true, -- 
-    [] = true, -- 
-    [] = true, -- 
-    [] = true, -- 
-    [] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
+    --[] = true, -- 
 }
 addon:RegisterCallback("AddonLoaded", function ()
     C_Timer.After(10, function ()
