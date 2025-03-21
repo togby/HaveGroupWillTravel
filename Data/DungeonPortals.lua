@@ -10,6 +10,7 @@ data.DungeonTeleporters = {}
 local currentSeason = {
     [354467] = true, -- Theater of Pain
     [373274] = true, -- Operation: Mechagon
+    [445441] = true, -- Darkflame Cleft
     --[] = true, -- 
     --[] = true, -- 
     --[] = true, -- 
@@ -107,6 +108,7 @@ CreateDungeonTeleportData(445414, "tWW",     "Dawnbreaker",                     
 CreateDungeonTeleportData(445269, "tWW",     "The Stonevault",                   "tSv")
 CreateDungeonTeleportData(445416, "tWW",     "City of Threads",                  "CoT")
 CreateDungeonTeleportData(445417, "tWW",     "Ara-Kara, City of Echoes",         "AK")
+CreateDungeonTeleportData(445441, "tWW",     "Darkflame Cleft",                  "DfC")
 
 
 for key, value in pairs(DungeonsTeleporters) do
