@@ -8,15 +8,14 @@ data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
 local currentSeason = {
-    [354467] = true, -- Theater of Pain
-    [373274] = true, -- Operation: Mechagon
-    [445441] = true, -- Darkflame Cleft
-    --[] = true, -- 
-    --[] = true, -- 
-    --[] = true, -- 
-    --[] = true, -- 
-    --[] = true, -- 
-    --[] = true, -- 
+    [354467]  = true, -- Theater of Pain
+    [373274]  = true, -- Operation: Mechagon
+    [445441]  = true, -- Darkflame Cleft
+    [445444]  = true, -- Priory of the Sacred Flame
+    [445443]  = true, -- The Rookery
+    [445440]  = true, -- Cinderbrew Meadery
+    [1216786] = true, -- Operation: Floodgate
+    --[] = true, --
 }
 addon:RegisterCallback("AddonLoaded", function ()
     C_Timer.After(10, function ()
@@ -27,7 +26,7 @@ addon:RegisterCallback("AddonLoaded", function ()
         end
     end)
 
-    C_Timer.NewTicker(5, function ()
+    C_Timer.NewTicker(10, function ()
         for _, value in pairs(data.EveryTeleporter) do
             value.button.cooldown:UpdateFunction()
         end
@@ -66,7 +65,7 @@ local function CreateDungeonTeleportData(spellId, expansion, dungeonFullName, du
     return data
 end
 
-CreateDungeonTeleportData(445424, "CATA",    "Grim batol",                      "GB")
+CreateDungeonTeleportData(445424, "CATA",    "Grim batol",                       "GB")
 CreateDungeonTeleportData(410080, "CATA",    "Vortex Pinnacle",                  "VP")
 CreateDungeonTeleportData(424142, "CATA",    "Throne of the Tides",              "TotT")
 CreateDungeonTeleportData(131204, "MOP",     "Temple of the Jade Serpent",       "TotJS")
@@ -109,6 +108,10 @@ CreateDungeonTeleportData(445269, "tWW",     "The Stonevault",                  
 CreateDungeonTeleportData(445416, "tWW",     "City of Threads",                  "CoT")
 CreateDungeonTeleportData(445417, "tWW",     "Ara-Kara, City of Echoes",         "AK")
 CreateDungeonTeleportData(445441, "tWW",     "Darkflame Cleft",                  "DfC")
+CreateDungeonTeleportData(445444, "tWW",     "Priory of the Sacred Flame",       "PotSF")
+CreateDungeonTeleportData(445443, "tWW",     "The Rookery",                      "tR")
+CreateDungeonTeleportData(445440, "tWW",     "Cinderbrew Meadery",               "CM")
+CreateDungeonTeleportData(1216786,"tWW",     "Operation: Floodgate",             "O:F")
 
 
 for key, value in pairs(DungeonsTeleporters) do
