@@ -8,14 +8,13 @@ data.EveryTeleporter = {}
 data.DungeonTeleporters = {}
 
 local currentSeason = {
-    [354467]  = true, -- Theater of Pain
-    [373274]  = true, -- Operation: Mechagon
-    [445441]  = true, -- Darkflame Cleft
+    [445417]  = true, -- Ara-Kara, City of Echoes
+    [445414]  = true, -- Dawnbreaker
+    [354465]  = true, -- Halls of Atonement
+    [367416]  = true, -- Tazavesh, the Veiled Market
     [445444]  = true, -- Priory of the Sacred Flame
-    [445443]  = true, -- The Rookery
-    [445440]  = true, -- Cinderbrew Meadery
     [1216786] = true, -- Operation: Floodgate
-    --[] = true, --
+    --[]  = true, -- Nye dunjhon
 }
 addon:RegisterCallback("AddonLoaded", function ()
     C_Timer.After(10, function ()
@@ -31,7 +30,6 @@ addon:RegisterCallback("AddonLoaded", function ()
             value.button.cooldown:UpdateFunction()
         end
     end)
- 
 end)
 
 addon.data.DungeonTeleportersByExpansion = function()
@@ -112,6 +110,7 @@ CreateDungeonTeleportData(445444, "tWW",     "Priory of the Sacred Flame",      
 CreateDungeonTeleportData(445443, "tWW",     "The Rookery",                      "tR")
 CreateDungeonTeleportData(445440, "tWW",     "Cinderbrew Meadery",               "CM")
 CreateDungeonTeleportData(1216786,"tWW",     "Operation: Floodgate",             "O:F")
+CreateDungeonTeleportData(467555, "tWW",     "The MOTHERLODE!!",                 "tML")
 
 
 for key, value in pairs(DungeonsTeleporters) do
